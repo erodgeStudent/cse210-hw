@@ -21,7 +21,7 @@ class Program
 
     static string PromptUserName()
     {
-        Console.Write("Please enter your name: ");
+        Console.Write("\nPlease enter your name: ");
         string name = Console.ReadLine();
         return name;
     }
@@ -41,6 +41,6 @@ class Program
 
     static void DisplayResult(string userName, double squared)
     {
-        Console.WriteLine($"{userName}, the square of your number is {squared}.");
+        Console.WriteLine($"\n{userName}, the square of your number is {squared}.");
     }
 }
