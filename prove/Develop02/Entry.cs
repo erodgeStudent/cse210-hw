@@ -20,9 +20,4 @@ public class Entry
         return txt;
     }
 
-    public void DisplayEntry()
-    {
-        Console.WriteLine($"Date: {_entryDate}");
-        Console.WriteLine($"{_userText}");
-    }
 }

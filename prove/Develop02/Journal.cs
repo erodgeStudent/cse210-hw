@@ -53,7 +53,6 @@ public class Journal
 
     public void LoadJournal()
     {
-        Console.WriteLine("inside load journal");
         Console.WriteLine("What is the file name?");
         this._filename = Console.ReadLine();
         //check if file exists
@@ -61,12 +60,15 @@ public class Journal
         {
             string[] lines = System.IO.File.ReadAllLines(_filename);
             using (StreamWriter outputFile = new StreamWriter(this._filename))
-            {
+            {   
+                Console.WriteLine($"\nEntries in {_filename}");
+                Console.WriteLine("--------------------");
                 foreach (string ln in lines)
                 {
                     Console.WriteLine(ln);
                     outputFile.WriteLine(ln);
                 }
+                Console.WriteLine("--------------------");
             }
             
         } else {
@@ -79,12 +81,22 @@ public class Journal
 
     public void DisplayJournal()
     {
-        Console.WriteLine("inside display journal");
         Console.WriteLine($"\nMy Journal Entries:");
-            foreach (Entry entry in _entries )
-            {
-                entry.DisplayEntry();
+        if (_entries.Count() > 0){
+            Console.WriteLine("--------------------");
+            foreach (Entry e in _entries){
+                Console.WriteLine($"Date: {e._entryDate}");
+                Console.WriteLine($"{e._userText}");
+                Console.WriteLine("");
             }
+            Console.WriteLine("--------------------");
+        }
+        else 
+        {
+            Console.WriteLine("\nThere are no entries to display.");
+            return;
+            
+        }
         
     }
 
