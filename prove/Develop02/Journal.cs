@@ -8,14 +8,14 @@ public class Journal
 
     //----------------------METHODS---------------------------------
     public void AddNewEntry(){
-        Console.WriteLine("inside Addnew entry");
+        // Console.WriteLine("inside Addnew entry");
         Entry _newEntry = new Entry();
         _entries.Add(_newEntry);
     }
 
     public void SaveJournal()
     {
-        Console.WriteLine("inside save journal");
+        // Console.WriteLine("inside save journal");
         Console.WriteLine("What is the filename?");
         this._filename = Console.ReadLine();
         //if file already exists, add new lines.
@@ -53,6 +53,7 @@ public class Journal
 
     public void LoadJournal()
     {
+        // Console.WriteLine("inside load journal");
         Console.WriteLine("What is the file name?");
         this._filename = Console.ReadLine();
         //check if file exists
@@ -81,6 +82,7 @@ public class Journal
 
     public void DisplayJournal()
     {
+        // Console.WriteLine("inside display journal");
         Console.WriteLine($"\nMy Journal Entries:");
         if (_entries.Count() > 0){
             Console.WriteLine("--------------------");
@@ -102,8 +104,8 @@ public class Journal
 
     public void QuitJournal()
     {
-        Console.WriteLine("inside quit journal");
-        Console.WriteLine("Are you sure you want to quit? (y/n)");
+        // Console.WriteLine("inside quit journal");
+        Console.Write("Are you sure you want to quit? (y/n) ");
         string res = Console.ReadLine();
         if (res == "y")
         {

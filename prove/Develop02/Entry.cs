@@ -11,7 +11,7 @@ public class Entry
     }
     public static string UserEntry()
     {
-        Console.WriteLine("Inside user Entry");
+        // Console.WriteLine("Inside user Entry");
         string prompt = Prompt.GenerateRandPrompt();
         Console.WriteLine($"{prompt}");
         Console.Write("> ");
