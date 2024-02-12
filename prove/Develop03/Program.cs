@@ -1,8 +1,4 @@
 using System;
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using static Text;
 
 class Program
 {
