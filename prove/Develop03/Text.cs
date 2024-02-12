@@ -10,7 +10,6 @@ using Microsoft.VisualBasic;
 public class Text
 {
     private string _text;
-    public List<string> _wordList = new List<string>();
 
     
     //----------CONSTRUCTORS

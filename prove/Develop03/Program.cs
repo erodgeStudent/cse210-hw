@@ -36,7 +36,6 @@ class Program
                     Console.Clear();
                     s.HideNext(num);
                     Console.WriteLine(s.Display());
-                    //need to get the word changed and call display again.
                     bool quit = s.GetCompletelyHidden();
                     if(quit == true) {
                         running = "no";
@@ -51,7 +50,7 @@ class Program
                     break;
                 
                 default:
-                    Console.WriteLine("Try your response again");
+                    Console.WriteLine("Try your response again.");
                     break;
             }
         }

@@ -46,9 +46,4 @@ public class Reference
         return $"{_book} {_chapter}:{_begVerse}-{_endVerse} ";
     }
 
-  
-
-
-    //---------METHODS
-
 }
