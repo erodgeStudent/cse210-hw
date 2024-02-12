@@ -3,13 +3,20 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 public class Word{
-    // //---------ATTRIBUTES
-    private string _word;
-    private bool _hidden = false;
-    // //---------CONSTRUCTORS
-     public Word(string text) {
-        _word = text;
-     }
+
+   
+   // //---------ATTRIBUTES
+   private string _word;
+   private bool _hidden = false;
+
+
+
+   // //---------CONSTRUCTORS
+   public Word(string text) {
+      _word = text;
+   }
+
+   //---------METHODS
 
      public void Hide() {
         _hidden = true;
@@ -30,6 +37,6 @@ public class Word{
         return _word;
      }
 
-    //---------METHODS
+    
 
 }

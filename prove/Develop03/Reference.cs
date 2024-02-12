@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Concurrent;
+using System.Text.Json;
 
 public class Reference
 {
     //-----------ATTRIBUTES
-    private string _book;
-    private int _chapter;
-    private int _begVerse;
-    private int _endVerse;
-
+    private string _book ;
+    private int _chapter ;
+    private int _begVerse ;
+    private int _endVerse ;
 
     //-----------CONSTRUCTORS
     public Reference()
@@ -19,7 +19,7 @@ public class Reference
         _endVerse = 6;
     }
 
-        public Reference(string book, int chapter, int begVerse)
+    public Reference(string book, int chapter, int begVerse)
     {
         _book = book;
         _chapter = chapter;
@@ -45,4 +45,10 @@ public class Reference
     {
         return $"{_book} {_chapter}:{_begVerse}-{_endVerse} ";
     }
+
+  
+
+
+    //---------METHODS
+
 }
