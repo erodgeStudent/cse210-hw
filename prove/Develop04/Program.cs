@@ -33,20 +33,35 @@ class Program
             var msg = "Breathing Activity.";
             var dscrpt = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
             Console.WriteLine("How much time -in seconds- would you like for your session?");
-            var time = Convert.ToInt32(Console.ReadLine());
-            BreathingActivity ba = new BreathingActivity(msg, dscrpt, time);
-
+            var seconds = Convert.ToInt32(Console.ReadLine());
+            BreathingActivity ba = new BreathingActivity(msg, dscrpt, seconds);
             Console.WriteLine(ba.GetSummary());
-            Console.WriteLine(ba.TimePerBreath());
+            Console.Clear();
+            Thread.Sleep(1000);
+            Console.WriteLine("Get Ready...");
+            ba.PlaySpinner();
+            var time = ba.GetTime();
+            Console.WriteLine(ba.TimePerBreath(time));
+            ba.PlaySpinner();
             Console.WriteLine(ba.GetBreathingSummary(time, msg));
+            // var addBT = ba.GetTotalBreathingTime();
+            // Log lg = new Log();
+            
             break;
         case "2":
         //go to reflecting
-            // var msg = "Reflecting Activity.";
-            // var dscrpt = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
-            // Console.WriteLine("How much time -in seconds- would you like for your session?");
-            // var time = Convert.ToInt32(Console.ReadLine());
-            // ReflectingActivity ra = new ReflectingActivity(msg, dscrpt, time);
+            msg = "Reflecting Activity.";
+            dscrpt = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+            Console.WriteLine("How much time -in seconds- would you like for your session?");
+            time = Convert.ToInt32(Console.ReadLine());
+            ReflectionActivity ra = new ReflectionActivity(msg, dscrpt, time);
+            Console.WriteLine(ra.GetSummary());
+            Console.Clear();
+            Thread.Sleep(1000);
+            Console.WriteLine("Get Ready...");
+            ra.PlaySpinner();
+            ra.DisplayPrompt();
+
             break;
         case "3":
         //go to listing

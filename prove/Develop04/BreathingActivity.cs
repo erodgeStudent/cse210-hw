@@ -1,35 +1,48 @@
-// using System;
+using System;
 
-//Get ready... 
-//Breathe in... countdown
-//Now breathe out... countdown
-//repeat 4x 
-//Finish with Well done!! -- run with spinner.
-//You have completed another (time) seconds of the Breathing Activity
 public class BreathingActivity : Activity
-{
+{   
+    private int _totalBreathing;
     
     public BreathingActivity(string msg, string dscrpt, int secs) : base(msg, dscrpt, secs)
     {
-
+        _totalBreathing =+ secs;
     }
 
-    public bool TimePerBreath()
+    public string TimePerBreath(int secs)
     {
         DateTime startTime = DateTime.Now;
-        DateTime fiveSeconds = startTime.AddSeconds(5);
+        DateTime timesUp = startTime.AddSeconds(secs);
+        while (DateTime.Now < timesUp)
+        {
+            Console.Write("\n>>Breathe in...");
+            for(int i = 5; i > 0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
 
-        Thread.Sleep(3000);
+            Console.Write("\n>>Breathe out...");
+            for(int i = 5; i>0; i--)
+            {
+                Console.Write(i);
+                Thread.Sleep(1000);
+                Console.Write("\b \b");
+            }
+            Console.WriteLine("");
 
-        for(int i = 0; i < 4; i++){
-            Console.WriteLine($"\n\n\nBreathe in...{fiveSeconds - startTime}");
-            Thread.Sleep(3000);
-        }
-        return true;
+        }   
+        return "\nFinished. Well Done!";
     }
 
     public string GetBreathingSummary(int time, string activity)
     {
-        return $"You have completed another {time} seconds of the {activity}";
+        return $"\n\nYou have completed another {time} seconds of the {activity}";
+    }
+
+    public int GetTotalBreathingTime()
+    {
+        return _totalBreathing;
     }
 }
