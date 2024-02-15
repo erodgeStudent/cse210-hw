@@ -47,7 +47,7 @@ class Program
             // var addBT = ba.GetTotalBreathingTime();
             // Log lg = new Log();
             
-            break;
+            return;
         case "2":
         //go to reflecting
             msg = "Reflecting Activity.";
@@ -62,8 +62,41 @@ class Program
             ra.PlaySpinner();
             var prompt = ra.GetRandomPrompt();
             ra.DisplayPrompt(prompt);
+            Console.WriteLine("When you have something in mind, press enter to continue.");
+            var ready = Console.ReadLine();
+            
+            switch (ready)
+            {
+                case "":
+                    Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
+                    Thread.Sleep(3000);
+                    Console.Write("\n>>You may begin in: ");
+                    for(int i = 5; i > 0; i--)
+                    {
+                        Console.Write(i);
+                        Thread.Sleep(1000);
+                        Console.Write("\b \b");
+                    }
+                    Console.Clear();
+                    time = ra.GetTime();
+                    var half = (time/2)*1000;
+                    DateTime current = DateTime.Now;
+                    DateTime end = current.AddSeconds(time);
+                    while (DateTime.Now < end)
+                    {
+                        var question = ra.GenerateQuestions();
+                        ra.DisplayQuestions(question, time);
+                        ra.PlaySpinner();
+                        Console.WriteLine("");
+                        Thread.Sleep(half);
+                    }
+                    Console.WriteLine(ra.GetReflectingSummary(time, msg));
+                    return;
+                default:
+                    Console.WriteLine("Were you ready? Try pressing Enter again.");
+                    return;
+            }
 
-            break;
         case "3":
         //go to listing
             // var msg = "Listing Activity.";
