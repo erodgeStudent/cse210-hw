@@ -60,7 +60,8 @@ class Program
             Thread.Sleep(1000);
             Console.WriteLine("Get Ready...");
             ra.PlaySpinner();
-            ra.DisplayPrompt();
+            var prompt = ra.GetRandomPrompt();
+            ra.DisplayPrompt(prompt);
 
             break;
         case "3":
