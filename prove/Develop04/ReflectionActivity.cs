@@ -79,5 +79,10 @@ public class ReflectionActivity : Activity
     {
         return $"\n\nYou have completed another {time} seconds of the {activity}";
     }
+
+        public int GetTotalReflectingTime()
+    {
+        return _totalReflecting;
+    }
 }      
     

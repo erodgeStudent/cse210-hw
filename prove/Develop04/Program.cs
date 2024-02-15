@@ -44,8 +44,9 @@ class Program
             Console.WriteLine(ba.TimePerBreath(time));
             ba.PlaySpinner();
             Console.WriteLine(ba.GetBreathingSummary(time, msg));
-            // var addBT = ba.GetTotalBreathingTime();
-            // Log lg = new Log();
+            var addBT = ba.GetTotalBreathingTime();
+            Log lg = new Log();
+            lg.LogMoreTime(addBT);
             
             return;
         case "2":
@@ -91,6 +92,9 @@ class Program
                         Thread.Sleep(half);
                     }
                     Console.WriteLine(ra.GetReflectingSummary(time, msg));
+                    var addRT = ra.GetTotalReflectingTime();
+                    Log lg = new Log();
+                    lg.LogMoreTime(addRT);
                     return;
                 default:
                     Console.WriteLine("Were you ready? Try pressing Enter again.");

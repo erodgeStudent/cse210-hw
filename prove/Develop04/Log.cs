@@ -3,49 +3,30 @@ using System;
 //Takes a running count of minutes and saves it to a TXT file
 public class Log
 {
-    private int _breathingTime;
-    private int _reflectingTime;
-    private int _listingTime;
+    private int _totalActivityTime;
+    private string _activity;
 
-    public Log(int bt, int rt, int lt)
+    public Log(int tt, string activity)
     {
-        _breathingTime = bt;
-        _reflectingTime = rt;
-        _listingTime = lt;
+        _totalActivityTime = tt;
+        _activity = activity;
     }
 
     //GETTERS AND SETTERS
-    public int GetBT()
+    public int GetTotalTime()
     {
-        return _breathingTime;
+        return _totalActivityTime;
     }
 
-    public int GetRT()
-    {
-        return _reflectingTime;
-    }
-    public int GetLT()
-    {
-        return _listingTime;
-    }
 
-    public int SetBT()
-    {
-        return _breathingTime;
-    }
-
-    public int SetRT()
-    {
-        return _reflectingTime;
-    }
     public int SetLT()
     {
-        return _listingTime;
+        return _totalActivityTime;
     }
     //METHODS
-    // public int LogMoreTime()
-    // {
-
-    // }
+    public void LogMoreTime(int time)
+    {
+        Console.WriteLine("function to add new time to log");
+    }
 
 }
