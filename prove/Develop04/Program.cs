@@ -2,11 +2,21 @@ using System;
 
 class Program
 {   
-    public static List<string> chooseActivity = new List<string>(){
-    "1. Start breathing activity",
-    "2. Start reflecting activity",
-    "3. Start listing activity",
-    "4. Quit"
+    public static List<string> chooseActivity = new List<string>()
+    {
+        "1. Start breathing activity",
+        "2. Start reflecting activity",
+        "3. Start listing activity",
+        "4. View Activity Log",
+        "5. Quit"
+    };
+
+    public static List<string> chooseLog = new List<string>()
+    {
+        "1. Breathing Log",
+        "2. Reflecting Log",
+        "3. Listing Log",
+        "4. Return to Main Menu"
     };
 
 
@@ -140,6 +150,35 @@ class Program
                     Console.Clear();
                     break;
                 case "4":
+                    //Go to log
+                    Console.WriteLine("Display Log");
+                    Console.WriteLine("Which log would you like to view?\n\n");
+                    foreach (string s in chooseLog)
+                    {
+                        Console.WriteLine(s);
+                    }
+                    var a = Console.ReadLine();
+                    var inLogMenu = "yes";
+                    do{
+                        switch (a)
+                        {
+                            case "1":
+                            Console.WriteLine("Inside view breathing");
+                            break;
+                            case "2":
+                            Console.WriteLine("Inside view reflecting");
+                            break;
+                            case "3":
+                            Console.WriteLine("Inside view listing");
+                            break;
+                            case "4":
+                            Console.WriteLine("Return to Menu");
+                            inLogMenu = "no";
+                            break;
+                        }
+                    } while (inLogMenu == "yes");
+                    break;
+                case "5":
                     running = "no";
                     break;
                 default :
