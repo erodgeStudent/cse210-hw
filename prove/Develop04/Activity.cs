@@ -56,7 +56,7 @@ public class Activity
 
     public int LogMoreTime(int seconds)
     {
-        Console.WriteLine("Log more time.");
+        Console.WriteLine("Logging your time..");
         _totalActivityTime = _totalActivityTime + seconds;
         Console.WriteLine(_totalActivityTime);
         return _totalActivityTime;

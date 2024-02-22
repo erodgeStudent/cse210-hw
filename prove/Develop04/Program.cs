@@ -25,9 +25,9 @@ class Program
         Console.WriteLine("Hello Develop04 World!");
         var running = "yes";
         var totalTime = 0;
-            var msg = "";
-            var dscrpt = "";
-            var seconds = 0;
+        var msg = "";
+        var dscrpt = "";
+        var seconds = 0;
         do
         {
             foreach(string s in chooseActivity)
@@ -67,7 +67,7 @@ class Program
                     var LogTime = a.LogMoreTime(addTime);
                     a.SetTotalTime(LogTime);
                     totalTime = a.GetTotalTime();
-                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
+                    // Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
                     ba.PlaySpinner();
                     Console.Clear();
                     break;
@@ -131,8 +131,8 @@ class Program
                     totalTime = a.GetTotalTime();
                     Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
                     a.LogMoreTime(addTime);
-                    Console.WriteLine(a.LogMoreTime(addTime));
-                    // totalTime = a.GetTotalTime();
+                    // Console.WriteLine(a.LogMoreTime(addTime));
+                    totalTime = a.GetTotalTime();
                     // Console.WriteLine(totalTime);
                     ra.PlaySpinner();
                     Console.Clear();
