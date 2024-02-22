@@ -19,7 +19,7 @@ public class Log
     }
 
 
-    public int SetLT()
+    public int SetLogTime()
     {
         return _totalActivityTime;
     }

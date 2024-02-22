@@ -8,7 +8,7 @@ public class ListingActivity : Activity
         _totalListing =+ secs; 
     }
 
-            public void DisplayListingPrompt(string prompt)
+    public void DisplayListingPrompt(string prompt)
     {
         Console.WriteLine("Consider the following prompt:\n");
         Console.WriteLine($"---{prompt}---");
@@ -35,7 +35,7 @@ public class ListingActivity : Activity
         return $"\n\nYou have completed another {time} seconds of the {activity}";
     }
 
-    public int GetTotalReflectingTime()
+    public int GetTotalListingTime()
     {
         return _totalListing;
     }
