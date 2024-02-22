@@ -67,10 +67,11 @@ class Program
                     var LogTime = a.LogMoreTime(addTime);
                     a.SetTotalTime(LogTime);
                     totalTime = a.GetTotalTime();
-                    // Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
                     ba.PlaySpinner();
                     Console.Clear();
                     break;
+
+
                 case "2":
                     //go to reflecting
                     msg = "Reflecting Activity.";
@@ -91,7 +92,7 @@ class Program
                     ra.DisplayPrompt(prompt);
                     Console.WriteLine("\n\nWhen you have something in mind, press enter to continue.");
                     var ready = Console.ReadLine();
-                    
+                    //check user input
                     switch (ready)
                     {
                         case "":
@@ -132,6 +133,8 @@ class Program
                     ra.PlaySpinner();
                     Console.Clear();
                     break;
+
+
                 case "3":
                 //go to listing
                     msg = "Listing Activity.";
@@ -171,6 +174,8 @@ class Program
                     la.PlaySpinner();
                     Console.Clear();
                     break;
+
+                    
                 case "4":
                     totalTime = a.GetTotalTime();
                     Console.WriteLine($"Congratulations! You have completed {totalTime} seconds of Mindfulness today.");
