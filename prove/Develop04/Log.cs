@@ -4,29 +4,15 @@ using System;
 public class Log
 {
     private int _totalActivityTime;
-    private string _activity;
 
-    public Log(int tt, string activity)
+    public Log(int tt)
     {
         _totalActivityTime = tt;
-        _activity = activity;
     }
 
-    //GETTERS AND SETTERS
-    public int GetTotalTime()
+        public int GetTotalTime()
     {
         return _totalActivityTime;
-    }
-
-
-    public int SetLogTime()
-    {
-        return _totalActivityTime;
-    }
-    //METHODS
-    public void LogMoreTime(int time)
-    {
-        Console.WriteLine("function to add new time to log");
     }
 
 }

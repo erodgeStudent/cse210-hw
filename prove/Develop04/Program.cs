@@ -7,8 +7,7 @@ class Program
         "1. Start breathing activity",
         "2. Start reflecting activity",
         "3. Start listing activity",
-        "4. View Activity Log",
-        "5. Quit"
+        "4. Quit"
     };
 
     public static List<string> chooseLog = new List<string>()
@@ -25,40 +24,50 @@ class Program
     {
         Console.WriteLine("Hello Develop04 World!");
         var running = "yes";
+        var totalTime = 0;
+            var msg = "";
+            var dscrpt = "";
+            var seconds = 0;
         do
         {
-            foreach(string a in chooseActivity)
+            foreach(string s in chooseActivity)
             {
-            Console.WriteLine(a);
+            Console.WriteLine(s);
             }
 
 
             Console.WriteLine("Select a choice from the menu:");
             var response = Console.ReadLine();
 
+            
 
-
+            Activity a = new Activity(msg, dscrpt, seconds, totalTime);
             switch (response)
             {
                 case "1":
                     //go to breathing
-                    var msg = "Breathing Activity.";
-                    var dscrpt = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
+                    msg = "Breathing Activity.";
+                    dscrpt = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
                     Console.WriteLine("How much time -in seconds- would you like for your session?");
-                    var seconds = Convert.ToInt32(Console.ReadLine());
-                    BreathingActivity ba = new BreathingActivity(msg, dscrpt, seconds);
-                    Console.WriteLine(ba.GetSummary());
+                    seconds = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    BreathingActivity ba = new BreathingActivity(msg, dscrpt, seconds, totalTime);
+                    ba.PlaySpinner();
+                    Console.WriteLine(ba.GetDescription());
+                    Thread.Sleep(5000);
                     Console.Clear();
                     Thread.Sleep(3000);
                     Console.WriteLine("Get Ready...\n\n");
                     ba.PlaySpinner();
-                    var time = ba.GetTime();
-                    Console.WriteLine(ba.TimePerBreath(time));
+                    Console.WriteLine(ba.TimePerBreath(seconds));
                     ba.PlaySpinner();
-                    Console.WriteLine(ba.GetBreathingSummary(time, msg));
-                    var addBT = ba.GetTotalBreathingTime();
-                    // Log lg = new Log();
-                    // lg.LogMoreTime(addBT);
+                    Console.WriteLine(ba.GetSummary(seconds, msg));
+                    Thread.Sleep(5000);
+                    var addTime = ba.GetSeconds();
+                    var LogTime = a.LogMoreTime(addTime);
+                    a.SetTotalTime(LogTime);
+                    totalTime = a.GetTotalTime();
+                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
                     ba.PlaySpinner();
                     Console.Clear();
                     break;
@@ -67,9 +76,12 @@ class Program
                     msg = "Reflecting Activity.";
                     dscrpt = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
                     Console.WriteLine("How much time -in seconds- would you like for your session?");
-                    time = Convert.ToInt32(Console.ReadLine());
-                    ReflectionActivity ra = new ReflectionActivity(msg, dscrpt, time);
-                    Console.WriteLine(ra.GetSummary());
+                    seconds = Convert.ToInt32(Console.ReadLine());
+                    ReflectionActivity ra = new ReflectionActivity(msg, dscrpt, seconds, totalTime);
+                    Console.Clear();
+                    ra.PlaySpinner();
+                    Console.WriteLine(ra.GetDescription());
+                    Thread.Sleep(5000);
                     Console.Clear();
                     Thread.Sleep(1000);
                     Console.WriteLine("Get Ready...\n\n");
@@ -93,27 +105,35 @@ class Program
                                 Console.Write("\b \b");
                             }
                             Console.Clear();
-                            time = ra.GetTime();
-                            var half = (time/2)*1000;
+                            var duration = ra.GetSeconds();
+                            var half = (duration/2)*1000;
                             DateTime current = DateTime.Now;
-                            DateTime end = current.AddSeconds(time);
+                            DateTime end = current.AddSeconds(duration);
                             while (DateTime.Now < end)
                             {
                                 var question = ra.GenerateQuestions();
-                                ra.DisplayQuestions(question, time);
+                                ra.DisplayQuestions(question, duration);
                                 ra.PlaySpinner();
                                 Console.WriteLine("");
                                 Thread.Sleep(half);
                             }
-                            Console.WriteLine(ra.GetReflectingSummary(time, msg));
-                            var addRT = ra.GetTotalReflectingTime();
-                            // Log lg = new Log();
-                            // lg.LogMoreTime(addRT);
+                            Console.WriteLine(ra.GetSummary(duration, msg));
+                            Thread.Sleep(5000);
+                            
                             break;
                         default:
                             Console.WriteLine("Were you ready? Try pressing Enter again.");
                             break;
                     }
+                    addTime = ra.GetSeconds();
+                    LogTime = a.LogMoreTime(addTime);
+                    a.SetTotalTime(LogTime);
+                    totalTime = a.GetTotalTime();
+                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
+                    a.LogMoreTime(addTime);
+                    Console.WriteLine(a.LogMoreTime(addTime));
+                    // totalTime = a.GetTotalTime();
+                    // Console.WriteLine(totalTime);
                     ra.PlaySpinner();
                     Console.Clear();
                     break;
@@ -122,9 +142,11 @@ class Program
                     msg = "Listing Activity.";
                     dscrpt = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
                     Console.WriteLine("How much time -in seconds- would you like for your session?");
-                    time = Convert.ToInt32(Console.ReadLine());
-                    ListingActivity la = new ListingActivity(msg, dscrpt, time);
-                    Console.WriteLine(la.GetSummary());
+                    seconds = Convert.ToInt32(Console.ReadLine());
+                    ListingActivity la = new ListingActivity(msg, dscrpt, seconds, totalTime);
+                    Console.Clear();
+                    Console.WriteLine(la.GetDescription());
+                    Thread.Sleep(5000);
                     Console.Clear();
                     Thread.Sleep(3000);
                     Console.WriteLine("\n\nGet Ready...\n\n");
@@ -143,42 +165,22 @@ class Program
                         Console.Write("\b \b");
                     }
                     Console.WriteLine("");
-                    la.GatherUserResponse(time);
-                    Console.WriteLine(la.GetListingSummary(time,msg));
-                    Thread.Sleep(3000);
+                    la.GatherUserResponse(seconds);
+                    Thread.Sleep(5000);
+                    Console.WriteLine(la.GetSummary(seconds, msg));
+                    addTime = la.GetSeconds();
+                    LogTime = a.LogMoreTime(addTime);
+                    a.SetTotalTime(LogTime);
+                    totalTime = a.GetTotalTime();
+                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
+                    Thread.Sleep(5000);
                     la.PlaySpinner();
                     Console.Clear();
                     break;
                 case "4":
-                    //Go to log
-                    Console.WriteLine("Display Log");
-                    Console.WriteLine("Which log would you like to view?\n\n");
-                    foreach (string s in chooseLog)
-                    {
-                        Console.WriteLine(s);
-                    }
-                    var a = Console.ReadLine();
-                    var inLogMenu = "yes";
-                    do{
-                        switch (a)
-                        {
-                            case "1":
-                            Console.WriteLine("Inside view breathing");
-                            break;
-                            case "2":
-                            Console.WriteLine("Inside view reflecting");
-                            break;
-                            case "3":
-                            Console.WriteLine("Inside view listing");
-                            break;
-                            case "4":
-                            Console.WriteLine("Return to Menu");
-                            inLogMenu = "no";
-                            break;
-                        }
-                    } while (inLogMenu == "yes");
-                    break;
-                case "5":
+                    totalTime = a.GetTotalTime();
+                    Console.WriteLine(totalTime);
+                    Console.WriteLine($"Congratulations! You have completed {totalTime} seconds of Mindfulness today.");
                     running = "no";
                     break;
                 default :

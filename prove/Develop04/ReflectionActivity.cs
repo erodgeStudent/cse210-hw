@@ -19,7 +19,7 @@ public class ReflectionActivity : Activity
     };
 
     //CONSTRUCTOR
-    public ReflectionActivity(string msg, string dscrpt, int secs) : base(msg, dscrpt, secs)
+    public ReflectionActivity(string msg, string dscrpt, int secs, int time) : base(msg, dscrpt, secs, time)
     {
         _totalReflecting =+ secs; 
     }
@@ -54,13 +54,8 @@ public class ReflectionActivity : Activity
 
     public void DisplayQuestions(string question, int time)
     {   
-        Console.Write($">{question}");
+        Console.Write($"> {question}");
         Thread.Sleep(time);
-    }
-
-        public string GetReflectingSummary(int time, string activity)
-    {
-        return $"\n\nYou have completed another {time} seconds of the {activity}";
     }
 
         public int GetTotalReflectingTime()

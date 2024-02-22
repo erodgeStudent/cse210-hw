@@ -4,7 +4,7 @@ public class BreathingActivity : Activity
 {   
     private int _totalBreathing;
     
-    public BreathingActivity(string msg, string dscrpt, int secs) : base(msg, dscrpt, secs)
+    public BreathingActivity(string msg, string dscrpt, int secs, int time) : base(msg, dscrpt, secs, time)
     {
         _totalBreathing =+ secs;
     }
@@ -34,11 +34,6 @@ public class BreathingActivity : Activity
 
         }   
         return "\nFinished. Well Done!";
-    }
-
-    public string GetBreathingSummary(int time, string activity)
-    {
-        return $"\n\nYou have completed another {time} seconds of the {activity}";
     }
 
     public int GetTotalBreathingTime()
