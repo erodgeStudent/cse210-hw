@@ -2,11 +2,9 @@ using System;
 
 public class BreathingActivity : Activity
 {   
-    private int _totalBreathing;
     
     public BreathingActivity(string msg, string dscrpt, int secs, int time) : base(msg, dscrpt, secs, time)
     {
-        _totalBreathing =+ secs;
     }
 
     public string TimePerBreath(int secs)
@@ -36,8 +34,4 @@ public class BreathingActivity : Activity
         return "\nFinished. Well Done!";
     }
 
-    public int GetTotalBreathingTime()
-    {
-        return _totalBreathing;
-    }
 }

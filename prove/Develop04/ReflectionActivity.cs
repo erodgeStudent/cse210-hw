@@ -6,10 +6,7 @@ public class ReflectionActivity : Activity
     //ATTRIBUTES
     // private string _prompt;
     // private string _question;
-    private int _totalReflecting;
 
-
-    
     public List<string> _questionsList = new List<string>()
     {
         "How did you feel when it was complete?",
@@ -21,7 +18,6 @@ public class ReflectionActivity : Activity
     //CONSTRUCTOR
     public ReflectionActivity(string msg, string dscrpt, int secs, int time) : base(msg, dscrpt, secs, time)
     {
-        _totalReflecting =+ secs; 
     }
 
     // //METHODS
@@ -58,9 +54,5 @@ public class ReflectionActivity : Activity
         Thread.Sleep(time);
     }
 
-        public int GetTotalReflectingTime()
-    {
-        return _totalReflecting;
-    }
 }      
     
