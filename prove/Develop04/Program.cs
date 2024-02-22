@@ -129,11 +129,6 @@ class Program
                     LogTime = a.LogMoreTime(addTime);
                     a.SetTotalTime(LogTime);
                     totalTime = a.GetTotalTime();
-                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
-                    a.LogMoreTime(addTime);
-                    // Console.WriteLine(a.LogMoreTime(addTime));
-                    totalTime = a.GetTotalTime();
-                    // Console.WriteLine(totalTime);
                     ra.PlaySpinner();
                     Console.Clear();
                     break;
@@ -172,14 +167,12 @@ class Program
                     LogTime = a.LogMoreTime(addTime);
                     a.SetTotalTime(LogTime);
                     totalTime = a.GetTotalTime();
-                    Console.WriteLine($"add: {addTime} \nTotal: {totalTime}");
                     Thread.Sleep(5000);
                     la.PlaySpinner();
                     Console.Clear();
                     break;
                 case "4":
                     totalTime = a.GetTotalTime();
-                    Console.WriteLine(totalTime);
                     Console.WriteLine($"Congratulations! You have completed {totalTime} seconds of Mindfulness today.");
                     running = "no";
                     break;

@@ -1,11 +1,9 @@
 using System;
 public class ListingActivity : Activity
 {
-    private int _totalListing;
     
     public ListingActivity(string msg, string dscrpt, int secs, int time) : base(msg, dscrpt, secs, time)
     {
-        _totalListing =+ secs; 
     }
 
     public void DisplayListingPrompt(string prompt)
@@ -32,9 +30,5 @@ public class ListingActivity : Activity
     }
 
 
-    public int GetTotalListingTime()
-    {
-        return _totalListing;
-    }
 
 }
