@@ -5,6 +5,7 @@ class Program
 {  
     static void Main(string[] args)
     {
+        Utils u = new Utils();
         List<Goal> goals = new List<Goal>();
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
@@ -53,25 +54,21 @@ class Program
                     break;
                 case 2:
                     //list
-                    Console.WriteLine("Inside List");
-
-                    foreach(Goal g in goals)
-                    {
-                        g.DisplayGoal();
-                    }
+                    u.DisplayAll(goals);
                     break;
-        //         case 3:
-        //             //save
-        //             Console.WriteLine("Inside Save");
-        //             break;
-        //         case 4:
-        //             //load
-        //             Console.WriteLine("Inside Load");
-        //             break;
-        //         case 5:
-        //             //record event
-        //             Console.WriteLine("Inside Record");
-        //             break;
+                case 3:
+                    //save
+                    Console.WriteLine("Inside Save");
+                    
+                    break;
+                case 4:
+                    //load
+                    Console.WriteLine("Inside Load");
+                    break;
+                case 5:
+                    //record event
+                    Console.WriteLine("Inside Record");
+                    break;
                 case 6:
                     //quit
                     Console.Write("Are you sure you want to quit? (y/n) ");
