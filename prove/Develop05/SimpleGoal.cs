@@ -9,9 +9,16 @@ public class SimpleGoal : Goal {
 
     }
 
+        public override void DisplayGoal()
+    {
+        base.DisplayGoal();
+    }
+
         public override void RecordEvent(int points)
     {
         _points = points;
         _complete = true;
     }
+
+
 }

@@ -27,28 +27,16 @@ class Program
                             //simple
                             SimpleGoal simple = menu.CreateSimple();
                             goals.Add(simple);
-                            foreach(Goal g in goals)
-                            {
-                                g.DisplayGoal();
-                            }
                             break;
                         case 2:
                             //eternal
                             EternalGoal eternalGoal = menu.CreateEternal();
                             goals.Add(eternalGoal);
-                            foreach(Goal g in goals)
-                            {
-                                g.DisplayGoal();
-                            }
                             break;
                         case 3:
                             //checklist
                             ChecklistGoal checklistGoal = menu.CreateChecklist();
                             goals.Add(checklistGoal);
-                            foreach(Goal g in goals)
-                            {
-                                g.DisplayGoal();
-                            }
                             break;
                     }
                     break;

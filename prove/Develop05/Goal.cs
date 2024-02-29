@@ -42,7 +42,7 @@ public class Goal
         return _complete;
     }
 
-    public void DisplayGoal()
+    public virtual void DisplayGoal()
     {   
         var check = "";
         if (_complete == true)

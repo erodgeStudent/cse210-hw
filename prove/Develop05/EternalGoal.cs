@@ -8,4 +8,9 @@ public class EternalGoal : Goal {
     {
 
     }
+
+        public override void DisplayGoal()
+    {
+        base.DisplayGoal();
+    }
 }
