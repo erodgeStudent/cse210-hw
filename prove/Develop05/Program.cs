@@ -6,6 +6,7 @@ class Program
     static void Main(string[] args)
     {
         Utils u = new Utils();
+        Goal goal = new Goal("","",0);
         List<Goal> goals = new List<Goal>();
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
@@ -47,7 +48,14 @@ class Program
                 case 3:
                     //save
                     Console.WriteLine("Inside Save");
-                    
+                    Console.WriteLine("Save File As: ");
+                    var filename = Console.ReadLine();
+                    List<string> saveList = new List<string>();
+                    foreach (Goal g in goals){
+                    var saveString = goal.GetStringRepresentation(g);
+                    saveList.Add(saveString);
+                    }
+                    goal.Save(filename, saveList);
                     break;
                 case 4:
                     //load

@@ -22,11 +22,12 @@ public class Menu
 
 
         public void DisplayMenu(){
-            Console.WriteLine("Menu Options:");
+            Console.WriteLine("\nMenu Options: ");
             foreach (string option in _menuOptions)
             {
                 Console.WriteLine(option);
             }
+            Console.WriteLine();
         }
 
         public int GetResponse(){
@@ -37,7 +38,7 @@ public class Menu
 
         public SimpleGoal CreateSimple()
         {
-            Console.WriteLine("What is the name of your goal?");
+            Console.Write("What is the name of your goal? ");
             var name = Console.ReadLine();
             Console.Write("What is a short description of it? ");
             var description = Console.ReadLine();

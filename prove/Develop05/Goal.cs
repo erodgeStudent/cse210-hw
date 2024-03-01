@@ -7,6 +7,7 @@ public class Goal
     private string _name;
     private string _description;
     private int _points;
+    private int _totalPoints;
     private bool _complete= false;
     private string _filename;
     public List<Goal> goals = new List<Goal>();
@@ -23,8 +24,9 @@ public class Goal
 
     public virtual void RecordEvent(int points)
     {
-        _points = points;
+        _totalPoints += points;
         _complete = true;
+        GetTotalPoints();
     }
 
     public int GetPoints()
@@ -32,9 +34,19 @@ public class Goal
         return _points;
     }
 
-    public void SetPoints(int points)
+    public int GetTotalPoints()
     {
-        _points += points;
+        return _totalPoints;
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
     }
     
     public bool CheckIsComplete()
@@ -54,17 +66,26 @@ public class Goal
         Console.WriteLine(check + " " + _name + " (" + _description + ")");
     }
 
-    public void Save()
+    public virtual string GetStringRepresentation(Goal goal)
     {
-        Console.WriteLine("Save file as: ");
-        this._filename = Console.ReadLine();
+        var objType = goal.GetType();
+        var name = goal.GetName();
+        var description = goal.GetDescription();
+        var points = goal.GetPoints();
+        string saveString = $"{objType}~{name}~{description}~{points}";
+        return saveString;
+    }
 
-        using (StreamWriter outputfile = new StreamWriter(this._filename))
-        {
-            foreach (Goal goal in goals)
+    public void Save(string filename, List<string> lst)
+    {
+
+        using (StreamWriter outputfile = new StreamWriter(filename))
+        {   
+            // outputfile.WriteLine{totalPoints};
+            foreach (string s in lst)
             {
-                goal.DisplayGoal();
-            }
+                outputfile.WriteLine(s);
+            } 
         }
     }
 

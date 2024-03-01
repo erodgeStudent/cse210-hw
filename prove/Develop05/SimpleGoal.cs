@@ -20,5 +20,10 @@ public class SimpleGoal : Goal {
         _complete = true;
     }
 
+    public override string GetStringRepresentation(Goal goal)
+    {
+        return base.GetStringRepresentation(goal);
+    }
+
 
 }

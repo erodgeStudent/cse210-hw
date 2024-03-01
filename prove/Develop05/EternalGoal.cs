@@ -13,4 +13,15 @@ public class EternalGoal : Goal {
     {
         base.DisplayGoal();
     }
+
+            public override void RecordEvent(int points)
+    {
+        _points = points;
+        _complete = true;
+    }
+    
+        public override string GetStringRepresentation(Goal goal)
+    {
+        return base.GetStringRepresentation(goal);
+    }
 }
