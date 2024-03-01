@@ -11,7 +11,8 @@ class Program
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
         do {
-            // Console.WriteLine($"You have {_points} points.\n");
+            var totalPoints = goal.GetTotalPoints();
+            Console.WriteLine($"You have {totalPoints} points.\n");
             
 
             Menu menu = new Menu();
@@ -43,6 +44,7 @@ class Program
                     break;
                 case 2:
                     //list
+
                     u.DisplayAll(goals);
                     break;
                 case 3:
