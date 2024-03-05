@@ -8,11 +8,12 @@ class Program
         Utils u = new Utils();
         Goal goal = new Goal("","",0);
         List<Goal> goals = new List<Goal>();
+        
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
         do {
             var totalPoints = goal.GetTotalPoints();
-            Console.WriteLine($"You have {totalPoints} points.\n");
+            Console.WriteLine($"You have {totalPoints} points.");
             
 
             Menu menu = new Menu();
@@ -26,29 +27,23 @@ class Program
                     switch (goalResponse)
                     {
                         case 1:
-                            //simple
                             SimpleGoal simple = menu.CreateSimple();
                             goals.Add(simple);
                             break;
                         case 2:
-                            //eternal
                             EternalGoal eternalGoal = menu.CreateEternal();
                             goals.Add(eternalGoal);
                             break;
                         case 3:
-                            //checklist
                             ChecklistGoal checklistGoal = menu.CreateChecklist();
                             goals.Add(checklistGoal);
                             break;
                     }
                     break;
                 case 2:
-                    //list
-
-                    u.DisplayAll(goals);
+                    goal.DisplayAll(goals);
                     break;
                 case 3:
-                    //save
                     Console.WriteLine("Inside Save");
                     Console.WriteLine("Save File As: ");
                     var filename = Console.ReadLine();
@@ -61,11 +56,10 @@ class Program
                     break;
                 case 4:
                     //load
-                    Console.WriteLine("Inside Load");
+                    goal.Load();
                     break;
                 case 5:
-                    //record event
-                    Console.WriteLine("Inside Record");
+                    menu.DisplayRecordGoalMenu(goals);
                     break;
                 case 6:
                     //quit

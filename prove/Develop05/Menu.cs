@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Metrics;
 
 public class Menu
 {
@@ -79,6 +80,15 @@ public class Menu
                 Console.WriteLine(goal);
             }
             Console.WriteLine("");
+        }
+
+        public void DisplayRecordGoalMenu(List<Goal> goals){
+            int count = 1;
+            for (int i = 0; i <= goals.Count; i++)
+            {
+                Console.WriteLine($"{count}. {goals[i].GetName()}");
+                count++;
+            }
         }
 
 }
