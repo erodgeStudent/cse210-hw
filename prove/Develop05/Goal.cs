@@ -11,7 +11,6 @@ public class Goal
     private int _totalPoints;
     private bool _complete= false;
     private string _filename;
-    public List<Goal> goals = new List<Goal>();
     
 
     public Goal(string name, string description, int points)
@@ -21,14 +20,21 @@ public class Goal
         _points = points;
     }
 
+    public Goal GetGoalByIndex(int i, List<Goal> lst)
+    {
+        Console.WriteLine(lst.Count);
+        return lst[i];
+    }
 
-
-    public virtual void RecordEvent(int points)
+    public virtual int RecordEvent()
     {   
-        
-        _totalPoints += points;
+        int points = GetPoints();
         _complete = true;
         GetTotalPoints();
+        Console.WriteLine($"Congratulations! You have earned {points} points!");
+        SetTotalPoints(points);
+        Console.WriteLine($"You now have {_totalPoints} points.");
+        return _totalPoints;
     }
 
     public int GetPoints()
@@ -39,6 +45,11 @@ public class Goal
     public int GetTotalPoints()
     {
         return _totalPoints;
+    }
+
+    public void SetTotalPoints(int p)
+    {
+        _totalPoints += p;
     }
 
     public string GetName()
@@ -87,7 +98,7 @@ public class Goal
         return saveString;
     }
 
-    public virtual void CreateGoalFromFile(string stringrepresentation)
+    public virtual Goal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
     {
 
             string [] strArray = stringrepresentation.Split("~");
@@ -98,8 +109,9 @@ public class Goal
                 _description = strArray[2],
                 _points = Convert.ToInt32(strArray[3])
             };
-            goals.Add(current);
             current.DisplayGoal();
+            lst.Add(current);
+            return current;
     }
 
     public void Save(string filename, List<string> lst)
@@ -108,6 +120,7 @@ public class Goal
         if (File.Exists(filename))
         {
             string[] lines = System.IO.File.ReadAllLines(filename);
+            
             using (StreamWriter outputfile = new StreamWriter(filename))
             {   
                 foreach (string ln in lines)
@@ -132,7 +145,7 @@ public class Goal
         }
     }
 
-    public void Load()
+    public void Load(List<Goal> lst)
     {
         Console.WriteLine("What is the file name?");
         string filename = Console.ReadLine();
@@ -150,7 +163,7 @@ public class Goal
                 Console.WriteLine($"\n Goals in {filename}:\n");
                 foreach (string ln in lines)
                 {
-                    CreateGoalFromFile(ln);
+                    CreateGoalFromFile(ln, lst);
                     outputFile.WriteLine(ln);
                 }
                 Console.WriteLine();

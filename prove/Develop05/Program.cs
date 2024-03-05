@@ -3,17 +3,16 @@ using System.Security.Cryptography.X509Certificates;
 
 class Program
 {  
+    
     static void Main(string[] args)
     {
-        Utils u = new Utils();
-        Goal goal = new Goal("","",0);
-        List<Goal> goals = new List<Goal>();
-        
+        List<Goal> _goals = new List<Goal>();
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
         do {
-            var totalPoints = goal.GetTotalPoints();
-            Console.WriteLine($"You have {totalPoints} points.");
+            Goal goal = new Goal("","",0);
+            var tPoints = goal.GetTotalPoints();
+            Console.WriteLine($"You have {tPoints} points.");
             
 
             Menu menu = new Menu();
@@ -21,45 +20,55 @@ class Program
             int response = menu.GetResponse();
             switch (response){
                 case 1:
-                    //create
                     menu.DisplayGoalMenu();
                     int goalResponse = menu.GetResponse();
                     switch (goalResponse)
                     {
                         case 1:
                             SimpleGoal simple = menu.CreateSimple();
-                            goals.Add(simple);
+                            _goals.Add(simple);
                             break;
                         case 2:
                             EternalGoal eternalGoal = menu.CreateEternal();
-                            goals.Add(eternalGoal);
+                            _goals.Add(eternalGoal);
                             break;
                         case 3:
                             ChecklistGoal checklistGoal = menu.CreateChecklist();
-                            goals.Add(checklistGoal);
+                            _goals.Add(checklistGoal);
+                            break;
+                        default:
+                            Console.WriteLine("Enter an option from the list.");
                             break;
                     }
                     break;
                 case 2:
-                    goal.DisplayAll(goals);
+                    goal.DisplayAll(_goals);
                     break;
                 case 3:
-                    Console.WriteLine("Inside Save");
                     Console.WriteLine("Save File As: ");
                     var filename = Console.ReadLine();
                     List<string> saveList = new List<string>();
-                    foreach (Goal g in goals){
+                    foreach (Goal g in _goals){
                     var saveString = goal.GetStringRepresentation(g);
                     saveList.Add(saveString);
                     }
                     goal.Save(filename, saveList);
+                    foreach(Goal g in _goals)
+                    {
+                        Console.WriteLine(g);
+                    }
                     break;
                 case 4:
                     //load
-                    goal.Load();
+                    
+                    goal.Load(_goals);
                     break;
                 case 5:
-                    menu.DisplayRecordGoalMenu(goals);
+                    menu.DisplayRecordGoalMenu(_goals);
+                    int index = menu.RecordResponse();
+                    Goal recordIt = goal.GetGoalByIndex(index, _goals);
+                    int totalP = recordIt.RecordEvent();
+                    goal.SetTotalPoints(totalP);
                     break;
                 case 6:
                     //quit

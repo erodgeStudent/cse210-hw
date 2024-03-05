@@ -14,10 +14,9 @@ public class SimpleGoal : Goal {
         base.DisplayGoal();
     }
 
-        public override void RecordEvent(int points)
+    public override int RecordEvent()
     {
-        _points = points;
-        _complete = true;
+        return base.RecordEvent();
     }
 
     public override string GetStringRepresentation(Goal goal)

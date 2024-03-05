@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.Metrics;
+using System.Security.Cryptography.X509Certificates;
 
 public class Menu
 {
@@ -82,13 +83,24 @@ public class Menu
             Console.WriteLine("");
         }
 
-        public void DisplayRecordGoalMenu(List<Goal> goals){
+        public void DisplayRecordGoalMenu(List<Goal> lst){
             int count = 1;
-            for (int i = 0; i <= goals.Count; i++)
-            {
-                Console.WriteLine($"{count}. {goals[i].GetName()}");
-                count++;
-            }
+                foreach (Goal g in lst)
+                {
+                    if (g.CheckIsComplete() == false)
+                    {
+                        Console.WriteLine($"{count}. {g.GetName()}");
+                        count++;
+                    }
+                }
+            RecordResponse();
+        }
+
+        public int RecordResponse()
+        {
+            Console.Write("Which goal did you accomplish? ");
+            int response = Convert.ToInt32(Console.ReadLine());
+            return response-1;
         }
 
 }

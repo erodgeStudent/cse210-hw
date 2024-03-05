@@ -14,13 +14,11 @@ public class EternalGoal : Goal {
         base.DisplayGoal();
     }
 
-            public override void RecordEvent(int points)
+    public override int RecordEvent()
     {
-        _points = points;
-        _complete = true;
+        return base.RecordEvent();
     }
-    
-        public override string GetStringRepresentation(Goal goal)
+    public override string GetStringRepresentation(Goal goal)
     {
         return base.GetStringRepresentation(goal);
     }
