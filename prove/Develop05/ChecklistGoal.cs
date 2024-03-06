@@ -58,21 +58,21 @@ public class ChecklistGoal : Goal {
         return $"{GetType()}:{name}~{description}~{points}~{bonusPoints}~{bonusTotalCount}~{currentBonus}";
     }
 
-    public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
-    {
-        string [] strArray = stringrepresentation.Split(":");
-        string[] paramArray = strArray[1].Split("~");
-        // var goalType = strArray[0];
-        ChecklistGoal checklist = new ChecklistGoal("","",0,0,0,0);
-                {
-                    _name = paramArray[0];
-                    _description = paramArray[1];
-                    _points = Convert.ToInt32(paramArray[2]);
-                    _bonusPoints = Convert.ToInt32(paramArray[3]);
-                    _bonusTotalCount = Convert.ToInt32(paramArray[4]);
-                    _currentBonus = Convert.ToInt32(paramArray[5]);
-                }
-        lst.Add(checklist);
-    }
+    // public override ChecklistGoal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    // {
+    //     string [] strArray = stringrepresentation.Split(":");
+    //     string[] paramArray = strArray[1].Split("~");
+    //     // var goalType = strArray[0];
+    //     var name = paramArray[0];
+    //     var description = paramArray[1];
+    //     var points = Convert.ToInt32(paramArray[2]);
+    //     var bonusPoints = Convert.ToInt32(paramArray[3]);
+    //     var bonusTotalCount = Convert.ToInt32(paramArray[4]);
+    //     var currentBonus = Convert.ToInt32(paramArray[5]);
+    //     ChecklistGoal checklist = new ChecklistGoal(name, description, points, bonusPoints, bonusTotalCount, currentBonus);
+    //     lst.Add(checklist);
+    //     checklist.DisplayGoal();
+    //     return checklist;
+    // }
 
 }

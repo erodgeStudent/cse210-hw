@@ -11,7 +11,6 @@ public class Goal
     private int _points;
     private int _totalPoints;
     private bool _complete= false;
-    private string _filename;
     
 
     public Goal(string name, string description, int points)
@@ -20,6 +19,7 @@ public class Goal
         _description = description;
         _points = points;
     }
+
 
     public Goal GetGoalByIndex(int i, List<Goal> lst)
     {
@@ -102,32 +102,38 @@ public class Goal
 
             string [] strArray = stringrepresentation.Split(":");
             string[] paramArray = strArray[1].Split("~");
-            //type of goal
-            var goalType = strArray[0];
-            //get each param and add new object to _goals
-            if (paramArray.Count() == 4)
-            {
-                SimpleGoal simple = new SimpleGoal("","" ,0, false);
-                {   
-                    _name = paramArray[0];
-                    _description = paramArray[1];
-                    _points = Convert.ToInt32(paramArray[2]);
-                };
-                lst.Add(simple);
-            }
 
-            if (paramArray.Count() == 3)
-            {
-                EternalGoal eternal = new EternalGoal("","",0);
-                {
-                    _name = paramArray[0];
-                    _description = paramArray[1];
-                    _points = Convert.ToInt32(paramArray[2]);
-                }
-                lst.Add(eternal);
-            }
+            string goalType = strArray[0];
+            //base params
+            var name = paramArray[0];
+            var description = paramArray[1];
+            var points = Convert.ToInt32(paramArray[2]);
 
-            
+            switch (goalType)
+            {
+                case "SimpleGoal":
+                    var isEternal = Convert.ToBoolean(paramArray[3]);
+                    SimpleGoal simple = new SimpleGoal(name, description, points, isEternal);
+                    lst.Add(simple);
+                    simple.DisplayGoal();
+                    break;
+                case "EternalGoal":
+                    EternalGoal eternal = new EternalGoal(name, description, points);
+                    lst.Add(eternal);
+                    eternal.DisplayGoal();
+                    break;
+                case "ChecklistGoal":
+                    var bonusPoints = Convert.ToInt32(paramArray[3]);
+                    var bonusTotalCount = Convert.ToInt32(paramArray[4]);
+                    var currentBonus = Convert.ToInt32(paramArray[5]);
+                    ChecklistGoal checklist = new ChecklistGoal(name, description, points, bonusPoints, bonusTotalCount, currentBonus);               
+                    lst.Add(checklist);
+                    checklist.DisplayGoal();
+                    break;
+                default:
+                    Console.WriteLine("None");
+                    break;
+            }     
     }
 
     public void Save(string filename, List<string> lst)

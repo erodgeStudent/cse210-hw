@@ -10,8 +10,9 @@ public class SimpleGoal : Goal {
 
     public SimpleGoal(string name, string description, int points, bool isEternal) : base (name, description, points)
     {
-        _isEternal = false;
+        _isEternal = isEternal;
     }
+
 
         public override void DisplayGoal()
     {
@@ -32,16 +33,17 @@ public class SimpleGoal : Goal {
         return $"{GetType()}:{name}~{description}~{points}~{eternal}";
     }
 
-    public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
-    {
-        string [] strArray = stringrepresentation.Split("~");
-        SimpleGoal simple = new SimpleGoal("", "", 0, false)
-        {
-                _name = strArray[1],
-                _description = strArray[2],
-                _points = Convert.ToInt32(strArray[3])
-        };
-        lst.Add(simple);
-    }
+    // public override SimpleGoal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    // {
+    //     string [] strArray = stringrepresentation.Split("~");
+    //     var name = strArray[1];
+    //     var description = strArray[2];
+    //     var points = Convert.ToInt32(strArray[3]);
+    //     SimpleGoal simple = new SimpleGoal(name, description, points, false);
+
+    //     lst.Add(simple);
+    //     simple.DisplayGoal();
+    //     return simple;
+    // }
 
 }

@@ -1,3 +1,3 @@
-SimpleGoal:read~read 30 minutes~5
-EternalGoal:read better~read more productive material~5
-ChecklistGoal:study~don't just read, but study~50~150~5~0
+SimpleGoal:simply~super simple description~5~False
+EternalGoal:eternally~very simple but eternal goal~5
+ChecklistGoal:checklistly~short simple checklist description~5~50~3~0
