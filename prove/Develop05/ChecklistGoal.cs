@@ -9,13 +9,14 @@ public class ChecklistGoal : Goal {
     private string _name;
     private string _description;
     private int _points;
-    public ChecklistGoal(string name, string description, int points, int bonusTotalCount, int bonusPoints) : base (name, description, points)
+    public ChecklistGoal(string name, string description, int points, int bonusPoints, int bonusTotalCount, int currentBonus) : base (name, description, points)
     {
         _name = name;
         _description = description;
         _points = points;
-        _bonusTotalCount = bonusTotalCount;
         _bonusPoints = bonusPoints;
+        _bonusTotalCount = bonusTotalCount;
+        _currentBonus = currentBonus;
     }
 
     public override void DisplayGoal()
@@ -55,6 +56,23 @@ public class ChecklistGoal : Goal {
         var bonusTotalCount = GetBonusTotalCount();
         var currentBonus = GetCurrentBonus();
         return $"{GetType()}:{name}~{description}~{points}~{bonusPoints}~{bonusTotalCount}~{currentBonus}";
+    }
+
+    public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    {
+        string [] strArray = stringrepresentation.Split(":");
+        string[] paramArray = strArray[1].Split("~");
+        // var goalType = strArray[0];
+        ChecklistGoal checklist = new ChecklistGoal("","",0,0,0,0);
+                {
+                    _name = paramArray[0];
+                    _description = paramArray[1];
+                    _points = Convert.ToInt32(paramArray[2]);
+                    _bonusPoints = Convert.ToInt32(paramArray[3]);
+                    _bonusTotalCount = Convert.ToInt32(paramArray[4]);
+                    _currentBonus = Convert.ToInt32(paramArray[5]);
+                }
+        lst.Add(checklist);
     }
 
 }

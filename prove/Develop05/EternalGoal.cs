@@ -18,8 +18,17 @@ public class EternalGoal : Goal {
     {
         return base.RecordEvent();
     }
+
     public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation();
+        var name = GetName();
+        var description = GetDescription();
+        var points = GetPoints();
+        return $"{GetType()}:{name}~{description}~{points}";
+    }
+
+    public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    {
+        base.CreateGoalFromFile(stringrepresentation, lst);
     }
 }

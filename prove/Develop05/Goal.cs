@@ -101,17 +101,33 @@ public class Goal
     {
 
             string [] strArray = stringrepresentation.Split(":");
-            Type type = Type.GetType($"System.{strArray[0]}");
-            Console.WriteLine(type);
+            string[] paramArray = strArray[1].Split("~");
+            //type of goal
+            var goalType = strArray[0];
+            //get each param and add new object to _goals
+            if (paramArray.Count() == 4)
+            {
+                SimpleGoal simple = new SimpleGoal("","" ,0, false);
+                {   
+                    _name = paramArray[0];
+                    _description = paramArray[1];
+                    _points = Convert.ToInt32(paramArray[2]);
+                };
+                lst.Add(simple);
+            }
 
-            // Goal current = new Goal("", "", 0)
-            // {
-            //     _name = strArray[1],
-            //     _description = strArray[2],
-            //     _points = Convert.ToInt32(strArray[3])
-            // };
-            // current.DisplayGoal();
-            // lst.Add(current);
+            if (paramArray.Count() == 3)
+            {
+                EternalGoal eternal = new EternalGoal("","",0);
+                {
+                    _name = paramArray[0];
+                    _description = paramArray[1];
+                    _points = Convert.ToInt32(paramArray[2]);
+                }
+                lst.Add(eternal);
+            }
+
+            
     }
 
     public void Save(string filename, List<string> lst)

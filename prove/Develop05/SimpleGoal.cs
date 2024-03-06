@@ -25,7 +25,11 @@ public class SimpleGoal : Goal {
 
     public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation();
+        var name = GetName();
+        var description = GetDescription();
+        var points = GetPoints();
+        var eternal = _isEternal;
+        return $"{GetType()}:{name}~{description}~{points}~{eternal}";
     }
 
     public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
@@ -36,7 +40,6 @@ public class SimpleGoal : Goal {
                 _name = strArray[1],
                 _description = strArray[2],
                 _points = Convert.ToInt32(strArray[3])
-            
         };
         lst.Add(simple);
     }

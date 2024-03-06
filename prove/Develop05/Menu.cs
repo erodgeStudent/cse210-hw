@@ -72,7 +72,8 @@ public class Menu
             var bonusTotalCount = Convert.ToInt32(Console.ReadLine());
             Console.Write("What is the bonus for accomplishing it that many times? ");
             var bonusPoints = Convert.ToInt32(Console.ReadLine());
-            return new ChecklistGoal(name, description, points, bonusTotalCount, bonusPoints);
+            var currentBonus = 0;
+            return new ChecklistGoal(name, description, points, bonusTotalCount, bonusPoints, currentBonus);
         }
 
         public void DisplayGoalMenu(){
