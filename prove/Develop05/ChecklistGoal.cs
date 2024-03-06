@@ -30,6 +30,7 @@ public class ChecklistGoal : Goal {
         Console.WriteLine($"{check} {_name} ({_description}) -- Currently completed: {_currentBonus}/{_bonusTotalCount}");
     }
 
+
     public int GetBonusPoints()
     {
         return _bonusPoints;
@@ -47,14 +48,13 @@ public class ChecklistGoal : Goal {
 
     public override string GetStringRepresentation()
     {
-        var objType = GetType();
         var name = GetName();
         var description = GetDescription();
         var points = GetPoints();
         var bonusPoints = GetBonusPoints();
         var bonusTotalCount = GetBonusTotalCount();
         var currentBonus = GetCurrentBonus();
-        string saveString = $"{objType}~{name}~{description}~{points}~{bonusPoints}~{bonusTotalCount}~{currentBonus}";
-        return saveString;
+        return $"{GetType()}:{name}~{description}~{points}~{bonusPoints}~{bonusTotalCount}~{currentBonus}";
     }
+
 }

@@ -1,12 +1,16 @@
 using System;
 
 public class SimpleGoal : Goal {
+    private string _name;
+    private string _description;
     private int _points;
-    private bool _complete = false;
+    private int _totalPoints;
+    private bool _complete= false;
+    private bool _isEternal;
 
-    public SimpleGoal(string name, string description, int points) : base (name, description, points)
+    public SimpleGoal(string name, string description, int points, bool isEternal) : base (name, description, points)
     {
-
+        _isEternal = false;
     }
 
         public override void DisplayGoal()
@@ -24,5 +28,17 @@ public class SimpleGoal : Goal {
         return base.GetStringRepresentation();
     }
 
+    public override void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    {
+        string [] strArray = stringrepresentation.Split("~");
+        SimpleGoal simple = new SimpleGoal("", "", 0, false)
+        {
+                _name = strArray[1],
+                _description = strArray[2],
+                _points = Convert.ToInt32(strArray[3])
+            
+        };
+        lst.Add(simple);
+    }
 
 }

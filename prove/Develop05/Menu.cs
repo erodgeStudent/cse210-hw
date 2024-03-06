@@ -46,7 +46,7 @@ public class Menu
             var description = Console.ReadLine();
             Console.Write("How many point is this goal worth? ");
             int points = Convert.ToInt32(Console.ReadLine());
-            return new SimpleGoal(name, description, points);
+            return new SimpleGoal(name, description, points, false);
         }
 
         public EternalGoal CreateEternal()

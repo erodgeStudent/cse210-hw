@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.IO.Enumeration;
+using System.Runtime.InteropServices.ObjectiveC;
 
 public class Goal
 {
@@ -79,7 +80,7 @@ public class Goal
         Console.WriteLine($"{check} {_name}  ({_description})");
     }
 
-        public void DisplayAll(List<Goal> lst)
+    public virtual void DisplayAll(List<Goal> lst)
     {   
         Console.WriteLine("\nYour goals are:");
         foreach (Goal g in lst)
@@ -90,27 +91,27 @@ public class Goal
 
     public virtual string GetStringRepresentation()
     {
-        var objType = GetType();
         var name = GetName();
         var description = GetDescription();
         var points = GetPoints();
-        string saveString = $"{objType}~{name}~{description}~{points}";
-        return saveString;
+        return $"{GetType()}:{name}~{description}~{points}";
     }
 
     public virtual void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
     {
 
-            string [] strArray = stringrepresentation.Split("~");
+            string [] strArray = stringrepresentation.Split(":");
+            Type type = Type.GetType($"System.{strArray[0]}");
+            Console.WriteLine(type);
 
-            Goal current = new Goal("", "", 0)
-            {
-                _name = strArray[1],
-                _description = strArray[2],
-                _points = Convert.ToInt32(strArray[3])
-            };
-            current.DisplayGoal();
-            lst.Add(current);
+            // Goal current = new Goal("", "", 0)
+            // {
+            //     _name = strArray[1],
+            //     _description = strArray[2],
+            //     _points = Convert.ToInt32(strArray[3])
+            // };
+            // current.DisplayGoal();
+            // lst.Add(current);
     }
 
     public void Save(string filename, List<string> lst)
