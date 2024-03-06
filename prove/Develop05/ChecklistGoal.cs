@@ -45,7 +45,7 @@ public class ChecklistGoal : Goal {
         return _bonusTotalCount;
     }
 
-    public override string GetStringRepresentation(Goal goal)
+    public override string GetStringRepresentation()
     {
         var objType = GetType();
         var name = GetName();

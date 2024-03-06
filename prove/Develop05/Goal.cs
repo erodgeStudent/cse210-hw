@@ -76,7 +76,7 @@ public class Goal
         }else{
             check = "[ ]";
         }
-        Console.WriteLine(check + " " + _name + " (" + _description + ")");
+        Console.WriteLine($"{check} {_name}  ({_description})");
     }
 
         public void DisplayAll(List<Goal> lst)
@@ -88,17 +88,17 @@ public class Goal
         }
     }
 
-    public virtual string GetStringRepresentation(Goal goal)
+    public virtual string GetStringRepresentation()
     {
-        var objType = goal.GetType();
-        var name = goal.GetName();
-        var description = goal.GetDescription();
-        var points = goal.GetPoints();
+        var objType = GetType();
+        var name = GetName();
+        var description = GetDescription();
+        var points = GetPoints();
         string saveString = $"{objType}~{name}~{description}~{points}";
         return saveString;
     }
 
-    public virtual Goal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    public virtual void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
     {
 
             string [] strArray = stringrepresentation.Split("~");
@@ -111,7 +111,6 @@ public class Goal
             };
             current.DisplayGoal();
             lst.Add(current);
-            return current;
     }
 
     public void Save(string filename, List<string> lst)

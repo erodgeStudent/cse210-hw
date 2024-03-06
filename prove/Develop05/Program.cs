@@ -49,14 +49,11 @@ class Program
                     var filename = Console.ReadLine();
                     List<string> saveList = new List<string>();
                     foreach (Goal g in _goals){
-                    var saveString = goal.GetStringRepresentation(g);
-                    saveList.Add(saveString);
+                        var saveString = g.GetStringRepresentation();
+                        saveList.Add(saveString);
                     }
                     goal.Save(filename, saveList);
-                    foreach(Goal g in _goals)
-                    {
-                        Console.WriteLine(g);
-                    }
+                    
                     break;
                 case 4:
                     //load

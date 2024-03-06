@@ -19,9 +19,9 @@ public class SimpleGoal : Goal {
         return base.RecordEvent();
     }
 
-    public override string GetStringRepresentation(Goal goal)
+    public override string GetStringRepresentation()
     {
-        return base.GetStringRepresentation(goal);
+        return base.GetStringRepresentation();
     }
 
 
