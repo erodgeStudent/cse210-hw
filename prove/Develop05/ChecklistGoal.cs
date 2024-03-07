@@ -21,6 +21,11 @@ public class ChecklistGoal : Goal {
 
     public override void DisplayGoal()
     {
+        if (CheckIsComplete() == true)
+        {
+            _complete = true;
+        }
+        _currentBonus = GetCurrentBonus();
         var check = "";
         if (_complete == true)
         {
@@ -47,6 +52,12 @@ public class ChecklistGoal : Goal {
         return _bonusTotalCount;
     }
 
+    public int AddCurrentBonus()
+    {
+        _currentBonus += 1;
+        return _currentBonus;
+    }
+
     public override string GetStringRepresentation()
     {
         var name = GetName();
@@ -62,12 +73,13 @@ public class ChecklistGoal : Goal {
     {
         int points = GetPoints();
         Console.WriteLine($"Congratulations! You have earned {points} points!");
+        AddCurrentBonus();
         if (_currentBonus == _bonusTotalCount){
             points += _bonusPoints;
             Completed();
         } 
-    
-            _currentBonus++;
+
+        
         return points;
     }
 

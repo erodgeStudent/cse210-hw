@@ -98,11 +98,9 @@ public class Menu
             int count = 1;
                 foreach (Goal g in lst)
                 {
-                    if (g.CheckIsComplete() == false)
-                    {
                         Console.WriteLine($"{count}. {g.GetName()}");
                         count++;
-                    }
+                    
                 }
         }
 
