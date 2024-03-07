@@ -97,7 +97,7 @@ public class Goal
         return $"{GetType()}:{name}~{description}~{points}";
     }
 
-    public virtual void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
+    public void CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
     {
 
             string [] strArray = stringrepresentation.Split(":");

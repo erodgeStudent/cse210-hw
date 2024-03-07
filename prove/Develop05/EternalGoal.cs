@@ -29,19 +29,4 @@ public class EternalGoal : Goal {
         return $"{GetType()}:{name}~{description}~{points}";
     }
 
-    // public override EternalGoal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
-    // {
-    //     string [] strArray = stringrepresentation.Split(":");
-    //         string[] paramArray = strArray[1].Split("~");
-    //         //type of goal
-    //         var goalType = strArray[0];
-    //         //get each param and add new object to list
-    //         var name = paramArray[0];
-    //         var description = paramArray[1];
-    //         var points = Convert.ToInt32(paramArray[2]);
-    //         EternalGoal goal = new EternalGoal(name, description, points);
-    //         lst.Add(goal);
-    //         goal.DisplayGoal();
-    //         return goal;
-    // }
 }
