@@ -9,10 +9,6 @@ public class SimpleGoal : Goal {
         _complete = complete;
     }
 
-    public void Completed()
-    {
-        _complete = true;
-    }
     
         public override void DisplayGoal()
     {

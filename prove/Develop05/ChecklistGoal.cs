@@ -5,7 +5,7 @@ public class ChecklistGoal : Goal {
     private int _bonusTotalCount;
     private int _currentBonus = 0;
     private int _bonusPoints;
-    private bool _complete= false;
+    private bool _complete;
     private string _name;
     private string _description;
     private int _points;
@@ -21,7 +21,6 @@ public class ChecklistGoal : Goal {
 
     public override void DisplayGoal()
     {
-        CheckIsComplete();
         var check = "";
         if (_complete == true)
         {
@@ -30,11 +29,6 @@ public class ChecklistGoal : Goal {
             check = "[ ]";
         }
         Console.WriteLine($"{check} {_name} ({_description}) -- Currently completed: {_currentBonus}/{_bonusTotalCount}");
-    }
-
-    public void Completed()
-    {
-        _complete = true;
     }
 
 
@@ -71,10 +65,9 @@ public class ChecklistGoal : Goal {
         if (_currentBonus == _bonusTotalCount){
             points += _bonusPoints;
             Completed();
-        } else
-        {
+        } 
+    
             _currentBonus++;
-        }
         return points;
     }
 

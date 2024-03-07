@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.IO.Enumeration;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ObjectiveC;
 class GoalFile{
 
@@ -86,9 +87,10 @@ class GoalFile{
             switch (goalType)
             {
                 case "SimpleGoal":
-                    var complete = Convert.ToBoolean(paramArray[3]);
-                    Console.WriteLine(complete);
+                    bool complete = Convert.ToBoolean(paramArray[3]);
                     SimpleGoal simple = new SimpleGoal(name, description, points, complete);
+                    if (complete == true)
+                    {simple.Completed();}
                     lst.Add(simple);
                     simple.DisplayGoal();
                     break;
@@ -101,7 +103,12 @@ class GoalFile{
                     var bonusPoints = Convert.ToInt32(paramArray[3]);
                     var bonusTotalCount = Convert.ToInt32(paramArray[4]);
                     var currentBonus = Convert.ToInt32(paramArray[5]);
+                    
                     ChecklistGoal checklist = new ChecklistGoal(name, description, points, bonusPoints, bonusTotalCount, currentBonus);               
+                    if (currentBonus == bonusTotalCount)
+                    {
+                        checklist.Completed();
+                    }
                     lst.Add(checklist);
                     checklist.DisplayGoal();
                     break;

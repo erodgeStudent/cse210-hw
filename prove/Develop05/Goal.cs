@@ -48,6 +48,11 @@ public class Goal
     {
         return _description;
     }
+
+    public void Completed()
+    {
+        _complete = true;
+    }
     
     public bool CheckIsComplete()
     {
