@@ -7,17 +7,20 @@ class Program
     static void Main(string[] args)
     {
         List<Goal> _goals = new List<Goal>();
+        GoalFile file = new GoalFile();
         Console.WriteLine("Welcome to Eternal Quest!\n");
         var running = "yes";
         do {
             Goal goal = new Goal("","",0);
-            var tPoints = goal.GetTotalPoints();
-            Console.WriteLine($"You have {tPoints} points.");
+            var totalPoints = file.GetTotalPoints();
+            Console.WriteLine($"You have {totalPoints} points.");
             
 
             Menu menu = new Menu();
             menu.DisplayMenu();
             int response = menu.GetResponse();
+            
+            
             switch (response){
                 case 1:
                     menu.DisplayGoalMenu();
@@ -42,41 +45,26 @@ class Program
                     }
                     break;
                 case 2:
-                    goal.DisplayAll(_goals);
+                    file.DisplayAll(_goals);
                     break;
                 case 3:
-                    Console.WriteLine("Save File As: ");
-                    var filename = Console.ReadLine();
-                    List<string> saveList = new List<string>();
-                    foreach (Goal g in _goals){
-                        var saveString = g.GetStringRepresentation();
-                        saveList.Add(saveString);
-                    }
-                    goal.Save(filename, saveList);
+                    var lst = file.CollectGoalsToSave(_goals);
+                    file.Save(lst);
                     
                     break;
                 case 4:
                     //load
-                    
-                    goal.Load(_goals);
+                    file.Load(_goals);
                     break;
                 case 5:
-                    menu.DisplayRecordGoalMenu(_goals);
-                    int index = menu.RecordResponse();
-                    Goal recordIt = goal.GetGoalByIndex(index, _goals);
-                    int totalP = recordIt.RecordEvent();
-                    goal.SetTotalPoints(totalP);
+                    int i = menu.RecordGoalMenu(_goals);
+                    Goal recordIt = goal.GetGoalByIndex(i, _goals);
+                    int addPoints = recordIt.RecordEvent();
+                    file.SetTotalPoints(addPoints);
                     break;
                 case 6:
                     //quit
-                    Console.Write("Are you sure you want to quit? (y/n) ");
-                    var quit = Console.ReadLine();
-                    if (quit == "y"){
-                        running = "no";
-                    }
-                    else{
-                        return;
-                    }
+                    running = file.QuitProgram();
                     break;
                 default:
                     break;

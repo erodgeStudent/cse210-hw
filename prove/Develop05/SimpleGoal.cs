@@ -1,27 +1,31 @@
 using System;
 
 public class SimpleGoal : Goal {
-    private string _name;
-    private string _description;
-    private int _points;
-    private int _totalPoints;
-    private bool _complete= false;
-    private bool _isEternal;
 
-    public SimpleGoal(string name, string description, int points, bool isEternal) : base (name, description, points)
+    private bool _complete;
+
+    public SimpleGoal(string name, string description, int points, bool complete) : base (name, description, points)
     {
-        _isEternal = isEternal;
+        _complete = complete;
     }
 
-
+    public void Completed()
+    {
+        _complete = true;
+    }
+    
         public override void DisplayGoal()
     {
+        
         base.DisplayGoal();
     }
 
     public override int RecordEvent()
     {
-        return base.RecordEvent();
+        int points = GetPoints();
+        Console.WriteLine($"Congratulations! You have earned {points} points!");
+        Completed();
+        return points;
     }
 
     public override string GetStringRepresentation()
@@ -29,21 +33,8 @@ public class SimpleGoal : Goal {
         var name = GetName();
         var description = GetDescription();
         var points = GetPoints();
-        var eternal = _isEternal;
-        return $"{GetType()}:{name}~{description}~{points}~{eternal}";
+        var complete = CheckIsComplete();
+        return $"{GetType()}:{name}~{description}~{points}~{complete}";
     }
-
-    // public override SimpleGoal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
-    // {
-    //     string [] strArray = stringrepresentation.Split("~");
-    //     var name = strArray[1];
-    //     var description = strArray[2];
-    //     var points = Convert.ToInt32(strArray[3]);
-    //     SimpleGoal simple = new SimpleGoal(name, description, points, false);
-
-    //     lst.Add(simple);
-    //     simple.DisplayGoal();
-    //     return simple;
-    // }
 
 }

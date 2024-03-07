@@ -21,6 +21,7 @@ public class ChecklistGoal : Goal {
 
     public override void DisplayGoal()
     {
+        CheckIsComplete();
         var check = "";
         if (_complete == true)
         {
@@ -29,6 +30,11 @@ public class ChecklistGoal : Goal {
             check = "[ ]";
         }
         Console.WriteLine($"{check} {_name} ({_description}) -- Currently completed: {_currentBonus}/{_bonusTotalCount}");
+    }
+
+    public void Completed()
+    {
+        _complete = true;
     }
 
 
@@ -58,21 +64,18 @@ public class ChecklistGoal : Goal {
         return $"{GetType()}:{name}~{description}~{points}~{bonusPoints}~{bonusTotalCount}~{currentBonus}";
     }
 
-    // public override ChecklistGoal CreateGoalFromFile(string stringrepresentation, List<Goal> lst)
-    // {
-    //     string [] strArray = stringrepresentation.Split(":");
-    //     string[] paramArray = strArray[1].Split("~");
-    //     // var goalType = strArray[0];
-    //     var name = paramArray[0];
-    //     var description = paramArray[1];
-    //     var points = Convert.ToInt32(paramArray[2]);
-    //     var bonusPoints = Convert.ToInt32(paramArray[3]);
-    //     var bonusTotalCount = Convert.ToInt32(paramArray[4]);
-    //     var currentBonus = Convert.ToInt32(paramArray[5]);
-    //     ChecklistGoal checklist = new ChecklistGoal(name, description, points, bonusPoints, bonusTotalCount, currentBonus);
-    //     lst.Add(checklist);
-    //     checklist.DisplayGoal();
-    //     return checklist;
-    // }
+    public override int RecordEvent()
+    {
+        int points = GetPoints();
+        Console.WriteLine($"Congratulations! You have earned {points} points!");
+        if (_currentBonus == _bonusTotalCount){
+            points += _bonusPoints;
+            Completed();
+        } else
+        {
+            _currentBonus++;
+        }
+        return points;
+    }
 
 }

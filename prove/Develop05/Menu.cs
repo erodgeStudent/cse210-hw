@@ -32,6 +32,8 @@ public class Menu
             Console.WriteLine();
         }
 
+
+
         public int GetResponse(){
             Console.Write("Select a choice from the menu: ");
             int response = Convert.ToInt32(Console.ReadLine());
@@ -83,8 +85,16 @@ public class Menu
             }
             Console.WriteLine("");
         }
-
-        public void DisplayRecordGoalMenu(List<Goal> lst){
+//--------------------------------------------------
+//choose all the goals available to record event
+        public int RecordGoalMenu(List<Goal> lst)
+        {
+            DisplayGoalsToRecord(lst);
+            int index = RecordResponse();
+            return index;
+        }
+        
+        public void DisplayGoalsToRecord(List<Goal> lst){
             int count = 1;
                 foreach (Goal g in lst)
                 {
@@ -94,7 +104,6 @@ public class Menu
                         count++;
                     }
                 }
-            RecordResponse();
         }
 
         public int RecordResponse()

@@ -1,3 +1,0 @@
-SimpleGoal:simply~super simple description~5~False
-EternalGoal:eternally~very simple but eternal goal~5
-ChecklistGoal:checklistly~short simple checklist description~5~50~3~0
