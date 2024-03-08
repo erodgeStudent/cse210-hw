@@ -49,7 +49,7 @@ class Program
                     break;
                 case 3:
                     var lst = file.CollectGoalsToSave(_goals);
-                    file.Save(lst);
+                    file.Save(lst, totalPoints);
                     
                     break;
                 case 4:

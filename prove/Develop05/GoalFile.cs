@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Enumeration;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ObjectiveC;
+using System.Linq;
 class GoalFile{
 
     private int _totalPoints;
@@ -28,14 +29,14 @@ class GoalFile{
         }
     }
 
-    public void Save(List<string> lst)
+    public void Save(List<string> lst, int totalPoints)
     {   
         Console.WriteLine("Save File As: ");
         var filename = Console.ReadLine();
         
             using (StreamWriter outputfile = new StreamWriter(filename))
             {   
-                // outputfile.WriteLine{totalPoints};
+                outputfile.WriteLine(totalPoints);
                 foreach (string s in lst)
                 {
                     outputfile.WriteLine(s);
@@ -57,10 +58,14 @@ class GoalFile{
         }
         else
         {
+            int totalPoints = Convert.ToInt32(File.ReadLines(filename).First());
+            _totalPoints = totalPoints;
             string[] lines = System.IO.File.ReadAllLines(filename);
+            lines = lines.Skip(1).ToArray();
             using (StreamWriter outputFile = new StreamWriter(filename))
             {
                 Console.WriteLine($"\n Goals in {filename}:\n");
+                outputFile.WriteLine(totalPoints);
                 foreach (string ln in lines)
                 {
                     CreateGoalFromFile(ln, lst);

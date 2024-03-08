@@ -58,6 +58,12 @@ public class ChecklistGoal : Goal {
         return _currentBonus;
     }
 
+    public void StartOver()
+    {
+        _complete = false;
+        _currentBonus = 0;
+    }
+
     public override string GetStringRepresentation()
     {
         var name = GetName();
@@ -76,10 +82,31 @@ public class ChecklistGoal : Goal {
         AddCurrentBonus();
         if (_currentBonus == _bonusTotalCount){
             points += _bonusPoints;
-            Completed();
-        } 
+            
+            Thread.Sleep(3000);
+            Console.WriteLine("And...");
+            Thread.Sleep(3000);
+            Console.WriteLine($"You gained {_bonusPoints} bonus points!");
+            Thread.Sleep(3000);
+            Console.WriteLine("Do you want to restart this goal? y/n");
+            var res = Console.ReadLine();
+            switch (res)
+            {
+                case "y":
+                    
+                    StartOver();
+                    break;
+                case "n":
+                    Completed();
+                    break;
+                default:
+                    Console.WriteLine("Invalid response. Try again.");
+                    break;
+            }
 
-        
+        } else{
+            Completed();
+        }
         return points;
     }
 
