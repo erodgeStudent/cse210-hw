@@ -53,6 +53,11 @@ public class Goal
     {
         _complete = true;
     }
+
+    public void NotCompleted()
+    {
+        _complete = false;
+    }
     
     public bool CheckIsComplete()
     {

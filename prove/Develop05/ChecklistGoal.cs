@@ -24,6 +24,9 @@ public class ChecklistGoal : Goal {
         if (CheckIsComplete() == true)
         {
             _complete = true;
+        }if (CheckIsComplete() == false)
+        {
+            _complete = false;
         }
         _currentBonus = GetCurrentBonus();
         var check = "";
@@ -58,11 +61,6 @@ public class ChecklistGoal : Goal {
         return _currentBonus;
     }
 
-    public void StartOver()
-    {
-        _complete = false;
-        _currentBonus = 0;
-    }
 
     public override string GetStringRepresentation()
     {
@@ -82,7 +80,9 @@ public class ChecklistGoal : Goal {
         AddCurrentBonus();
         if (_currentBonus == _bonusTotalCount){
             points += _bonusPoints;
-            
+            Completed();
+            CheckIsComplete();
+            DisplayGoal();
             Thread.Sleep(3000);
             Console.WriteLine("And...");
             Thread.Sleep(3000);
@@ -93,8 +93,8 @@ public class ChecklistGoal : Goal {
             switch (res)
             {
                 case "y":
-                    
-                    StartOver();
+                    NotCompleted();
+                    _currentBonus = 0;
                     break;
                 case "n":
                     Completed();
@@ -104,8 +104,6 @@ public class ChecklistGoal : Goal {
                     break;
             }
 
-        } else{
-            Completed();
         }
         return points;
     }
