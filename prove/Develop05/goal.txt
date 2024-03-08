@@ -1,0 +1,5 @@
+285
+SimpleGoal:laundry~do a load of laundry today~15~True
+EternalGoal:clean~clean my room every day~45
+ChecklistGoal:make my bed~make my bed when i wake up in the morning~5~50~5~5
+SimpleGoal:dogs~give dogs their immunizations.~50~True
