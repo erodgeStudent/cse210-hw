@@ -1,4 +1,5 @@
-1310
+1960
 SimpleGoal:clean~clean the bathroom today~5~True
 EternalGoal:motherhood~become a better mother every day~5
 ChecklistGoal:make my bed~make my bed every day when i wake up~50~500~3~0
+SimpleGoal:simpe~silmpl ;in ;kj~10~False
