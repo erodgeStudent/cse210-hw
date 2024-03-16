@@ -1,16 +1,19 @@
 using System;
 
 public class Bane : Child {
+    
     private int _extracurricularLevel;
 
-    public Bane(int age, string name, int rLevel, int hLevel, int eLevel) : base ( age,  name, rLevel,  hLevel)
+
+    public Bane(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
     {
-        _extracurricularLevel = eLevel;
+    
+        _extracurricularLevel = ecLevel;
     }
 
-    public override void CalculatePointRate()
-    {
-        // var rate = age * rLevel * hLevel * eLevel;
-        // return rate;
-    }
+    // public override void CalculatePointRate()
+    // {
+    //     // var rate = age * rLevel * hLevel * eLevel;
+    //     // return rate;
+    // }
 }
