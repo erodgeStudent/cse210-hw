@@ -1,10 +1,10 @@
 using System;
 
-public class Roman : Child
+public class Elementary : Child
 {   
     private int _extracurricularLevel;
 
-    public Roman(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
+    public Elementary(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
     {
     
         _extracurricularLevel = ecLevel;

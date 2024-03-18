@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 public class Menu{
@@ -13,7 +14,7 @@ public class Menu{
 
     public Menu(){}
 
-    public void Login(List<Child> lst)
+    public Child Login(List<Child> lst)
     {
         Console.WriteLine("\nSelect a user.");
         int count = 1;
@@ -32,23 +33,23 @@ public class Menu{
                 PasswordLogin(child, p);
                 break;
             case 2:
-            PasswordLogin(child, p);
+                PasswordLogin(child, p);
                 break;
             case 3:
-            PasswordLogin(child, p);
+                PasswordLogin(child, p);
                 break;
             case 4:
-            PasswordLogin(child, p);
+                PasswordLogin(child, p);
                 break;
             default:
 
                 Console.WriteLine("Error. Try again.");
                 break;
         }
-
+        return child;
     }
 
-    public void PasswordLogin(Child c, string password){
+    public Child PasswordLogin(Child c, string password){
         var correct = false;
         do{
             
@@ -58,45 +59,24 @@ public class Menu{
         
         if (input == password){
             c.IsLoggedIn();
+            Console.WriteLine($"Welcome, {c.GetName()}!");
             correct = true;
-            Console.WriteLine("true");
         } else {
             Console.WriteLine("Error. Try again.");
             correct = false;
         }
         } while ( correct == false);
-        
+        return c;
     }
-    public void DisplayOptions()
+    public void DisplayOptions(Child c)
     {   
-        var count = 1;
-        Console.Write("Choose an option.");
-        foreach (string option in Enum.GetNames(typeof(MenuOptions)))
-        {
-            Console.WriteLine($"\t{count}. {option}");
-            count ++;
-        }
-
-        Console.WriteLine("\nChoose an option.");
-        var choice = Convert.ToInt32(Console.ReadLine());
-        switch (choice)
-        {
-            case 1:
-            //add new task
-            break;
-            case 2:
-            //record task complete
-            break;
-            case 3:
-            //view list of tasks
-            break;
-            case 4:
-            //Quit
-            break;
-            default:
-            //Try again.
-            break;
-        }
+            var count = 1;
+            Console.WriteLine("What would you like to do?.\n");
+            foreach (string option in Enum.GetNames(typeof(MenuOptions)))
+            {
+                Console.WriteLine($"\t{count}. {option}");
+                count ++;
+            }
     }
 
 

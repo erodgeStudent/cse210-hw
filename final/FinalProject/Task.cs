@@ -21,15 +21,15 @@ public class Task{
         return _pointVal;
     }
 
-    public void AddNewTask(List<Task> lst)
+    public List<Task> AddNewTask(List<Task> lst)
     {
         Console.WriteLine("Enter task name: ");
         string name = Console.ReadLine();
         Console.WriteLine("How many points is this worth? ");
         int pointVal = Convert.ToInt32(Console.ReadLine());
         Task newTask = new Task(name, pointVal);
-
         lst.Add(newTask);
+        return lst;
     }
 
     public void ListAllTasks(List<Task> lst)
@@ -40,10 +40,10 @@ public class Task{
         }
     }
 
-    public string DisplayTaskString()
+    public void DisplayTaskString()
     {
         var name = GetName();
         var pVal = GetPointVal();
-        return $"{name} is worth {pVal} points.";
+        Console.WriteLine($">>{name} is worth {pVal} points.");
     }
 }

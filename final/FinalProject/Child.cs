@@ -9,6 +9,7 @@ public class Child
     private int _responsibilityLevel;
     private int _homeworkLevel;
     private string _password;
+    private int _points;
     
     private List<string> _chores;
     private bool _loggedIn;
@@ -41,6 +42,11 @@ public class Child
         return _password;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
     public virtual List<Task> GetTasks(int rate, List<Task> allTasks )
     {
         List<Task> tasks = new List<Task>();
@@ -54,6 +60,11 @@ public class Child
     public bool IsLoggedIn(){
         _loggedIn = true;
         return _loggedIn;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
     }
 
 
