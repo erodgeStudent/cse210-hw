@@ -1,11 +1,13 @@
 using System;
 
-public class High : Child {
+public class Middle : Child {
     
     private int _extracurricularLevel;
 
-    public High(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base(age, name, rLevel, hLevel, password, loggedIn)
+
+    public Middle(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
     {
+    
         _extracurricularLevel = ecLevel;
     }
 

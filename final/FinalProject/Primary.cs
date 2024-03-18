@@ -8,18 +8,13 @@ public class Primary : Child
     {
     }
 
-    // public override void CalculatePointRate()
-    // {
-    //     base.CalculatePointRate();
-    // }
+    public override int CalculatePointRate()
+    {
+        return base.CalculatePointRate();
+    }
 
     public override List<Task> GetTasks(int rate, List<Task> allTasks )
     {
-        List<Task> tasks = new List<Task>();
-        foreach (Task c in allTasks)
-        {
-            //
-        }
-        return tasks;
+        return base.GetTasks(rate, allTasks);
     }
 }

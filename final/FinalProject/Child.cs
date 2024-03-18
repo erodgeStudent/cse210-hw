@@ -25,8 +25,26 @@ public class Child
 
     }
 
-    public virtual int CalculatePointRate(int age, int rLevel, int hLevel)
+    public int GetAge()
     {
+        return _age;
+    }
+
+    public int GetRLevel()
+    {
+        return _responsibilityLevel;
+    }
+
+    public int GetHLevel()
+    {
+        return _homeworkLevel;
+    }
+
+    public virtual int CalculatePointRate()
+    {
+        var age = GetAge();
+        var rLevel = GetRLevel();
+        var hLevel = GetHLevel();
         var rate = age * rLevel * hLevel;
         return rate;
     }
@@ -50,11 +68,15 @@ public class Child
     public virtual List<Task> GetTasks(int rate, List<Task> allTasks )
     {
         List<Task> tasks = new List<Task>();
-        foreach (Task c in allTasks)
+        List<Task> childTasks = new List<Task>();
+        foreach (Task t in allTasks)
         {
-            //
+            var points = t.GetPointVal();
+            if (points < 10){
+                childTasks.Add(t);
+            }
         }
-        return tasks;
+        return childTasks;
     }
 
     public bool IsLoggedIn(){

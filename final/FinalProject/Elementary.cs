@@ -10,11 +10,20 @@ public class Elementary : Child
         _extracurricularLevel = ecLevel;
     }
 
-    // public override void CalculatePointRate()
-    // {
-    //     // var rate = age * rLevel * hLevel;
-    //     // return rate;
-    // }
+    public int GetECLevel()
+    {
+        return _extracurricularLevel;
+    }
+
+    public override int CalculatePointRate()
+    {
+        var age = GetAge();
+        var rLevel = GetRLevel();
+        var hLevel = GetHLevel();
+        var ecLevel = GetECLevel();
+        var rate = age * rLevel * hLevel * ecLevel;
+        return rate;
+    }
 
     public override List<Task> GetTasks(int rate, List<Task> allTasks )
     {
