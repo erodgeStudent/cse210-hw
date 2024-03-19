@@ -1,1 +1,3 @@
-Brush Teeth:5
+Make Bed:5
+Brush Teeth:10
+Brush Hair:5

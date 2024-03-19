@@ -6,7 +6,7 @@ public class High : Child {
 
     private int _extracurricularLevel;
 
-    public High(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn, int range) : base(age, name, rLevel, hLevel, password, loggedIn, range)
+    public High(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base(age, name, rLevel, hLevel, password, loggedIn)
     {
         _extracurricularLevel = ecLevel;
     }

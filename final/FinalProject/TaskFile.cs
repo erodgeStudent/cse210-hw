@@ -13,21 +13,22 @@ class TaskFile{
         Console.WriteLine("Saving your file.");
         var filename = $"{c.SaveFile()}.txt";
         Console.WriteLine(filename);
-        if(!File.Exists(filename))
         using (StreamWriter outputfile = new StreamWriter(filename))
         {
             foreach (string task in lst)
             {   
-                Console.WriteLine(task);
                 outputfile.WriteLine(task);
             }
         }
+        Console.WriteLine("");
     }
 
-    public void Load(List<Task> lst, Child c)
+    public void Load(Child c)
     {
         var filename = $"{c.SaveFile()}.txt";
+        var lst = c._userTasks;
         if (File.Exists(filename)){
+            Console.WriteLine("Loading Progress");
             string[] lines = System.IO.File.ReadAllLines(filename);
             using (StreamWriter outputFile = new StreamWriter(filename))
             {
@@ -42,6 +43,7 @@ class TaskFile{
 
     public void CreateTask(string stringSave, List<Task> lst)
     {
+        Console.WriteLine("inside create task");
         string [] strArray = stringSave.Split(":");
         string name = strArray[0];
         int points = Convert.ToInt32(strArray[1]);

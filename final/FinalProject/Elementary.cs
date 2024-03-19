@@ -5,7 +5,7 @@ public class Elementary : Child
     private int _extracurricularLevel;
 
 
-    public Elementary(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn, int range) : base (age, name, rLevel, hLevel, password, loggedIn, range)
+    public Elementary(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
     {
     
         _extracurricularLevel = ecLevel;

@@ -1,10 +1,9 @@
 using System;
+using System.Dynamic;
 
 public class Task{
     private string _name;
     private int _pointVal;
-
-    public List<Task> _allTasks = new List<Task>();
 
     public Task(string name, int pointVal){
         _name = name;
@@ -21,8 +20,10 @@ public class Task{
         return _pointVal;
     }
 
-    public List<Task> AddNewTask(List<Task> lst)
-    {
+    public List<Task> AddNewTask(Child c)
+    {   
+        Console.WriteLine("inside add new task");
+        var lst = c._userTasks;
         Console.WriteLine("Enter task name: ");
         string name = Console.ReadLine();
         Console.WriteLine("How many points is this worth? ");
@@ -32,13 +33,15 @@ public class Task{
         return lst;
     }
 
-    public void ListUserTasks(List<Task> lst)
-    {
-        foreach (Task t in lst)
-        {
-            t.DisplayTaskString();
-        }
-    }
+    // public void ListUserTasks(Child c)
+    // {   
+    //     Console.WriteLine("inside list usertasks");
+    //     var lst = c._userTasks;
+    //     foreach (Task t in lst)
+    //     {
+    //         t.DisplayTaskString();
+    //     }
+    // }
 
     public void DisplayTaskString()
     {

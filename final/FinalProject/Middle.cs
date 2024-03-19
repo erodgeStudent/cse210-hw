@@ -6,7 +6,7 @@ public class Middle : Child {
 
 
 
-    public Middle(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn, int range) : base (age, name, rLevel, hLevel, password, loggedIn, range)
+    public Middle(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
     {
     
         _extracurricularLevel = ecLevel;

@@ -14,8 +14,9 @@ public class Child
     public int _range;
     
     private bool _loggedIn;
+    public List<Task> _userTasks = new List<Task>();
 
-    public Child(int age, string name, int rLevel, int hLevel, string password, bool loggedIn, int range)
+    public Child(int age, string name, int rLevel, int hLevel, string password, bool loggedIn)
     {
         _age = age;
         _name = name;
@@ -23,7 +24,6 @@ public class Child
         _homeworkLevel = hLevel;
         _password = password;
         _loggedIn = loggedIn;
-        _range = range;
 
     }
 
@@ -73,17 +73,21 @@ public class Child
         return _name;
     }
 
-    public List<string> GetTasks(List<Task> allTasks )
+    public List<string> GetTasks()
     {
+        Console.WriteLine("inside GetTasks");
         List<string> childTasks = new List<string>();
         var range = GetRange();
-        foreach (Task t in allTasks)
+        Console.WriteLine("Saving:");
+        foreach (Task t in _userTasks)
         {
-            var points = t.GetPointVal();
-            if (points < range){
+            // var points = t.GetPointVal();
+            // if (points < range){
                 var stringSave = t.SaveStringInFile();
                 childTasks.Add(stringSave);
-            }
+                Console.WriteLine(stringSave);
+                Thread.Sleep(1000);
+            // }
         }
         return childTasks;
     }
