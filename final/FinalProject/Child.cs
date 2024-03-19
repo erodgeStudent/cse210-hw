@@ -9,12 +9,13 @@ public class Child
     private int _responsibilityLevel;
     private int _homeworkLevel;
     private string _password;
+    private string _filename;
     private int _points;
+    public int _range;
     
-    private List<string> _chores;
     private bool _loggedIn;
 
-    public Child(int age, string name, int rLevel, int hLevel, string password, bool loggedIn)
+    public Child(int age, string name, int rLevel, int hLevel, string password, bool loggedIn, int range)
     {
         _age = age;
         _name = name;
@@ -22,6 +23,7 @@ public class Child
         _homeworkLevel = hLevel;
         _password = password;
         _loggedIn = loggedIn;
+        _range = range;
 
     }
 
@@ -33,6 +35,12 @@ public class Child
     public int GetRLevel()
     {
         return _responsibilityLevel;
+    }
+
+    public string SaveFile(){
+        var name = GetName();
+        _filename = name;
+        return _filename;
     }
 
     public int GetHLevel()
@@ -65,15 +73,16 @@ public class Child
         return _name;
     }
 
-    public virtual List<Task> GetTasks(int rate, List<Task> allTasks )
+    public List<string> GetTasks(List<Task> allTasks )
     {
-        List<Task> tasks = new List<Task>();
-        List<Task> childTasks = new List<Task>();
+        List<string> childTasks = new List<string>();
+        var range = GetRange();
         foreach (Task t in allTasks)
         {
             var points = t.GetPointVal();
-            if (points < 10){
-                childTasks.Add(t);
+            if (points < range){
+                var stringSave = t.SaveStringInFile();
+                childTasks.Add(stringSave);
             }
         }
         return childTasks;
@@ -87,6 +96,11 @@ public class Child
     public int GetPoints()
     {
         return _points;
+    }
+
+    public int GetRange()
+    {
+        return _range;
     }
 
 

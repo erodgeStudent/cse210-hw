@@ -4,13 +4,13 @@ using System.Security.Cryptography;
 
 public class Menu{
 
-    enum MenuOptions
-    {
-        Add=1,
-        Record,
-        View,
-        Quit
-    }
+    public List<string> _menuOptions = new List<string>(){
+        "Add New Task",
+        "Record Task Complete",
+        "View Your Tasks",
+        "Save",
+        "Quit"
+    };
 
     public Menu(){}
 
@@ -20,7 +20,7 @@ public class Menu{
         int count = 1;
         foreach (Child option in lst)
         {
-            Console.WriteLine($"\t{count}. {option}");
+            Console.WriteLine($"\t{count}. {option.GetName()}");
             count ++;
         }
         var userChoice = Convert.ToInt32(Console.ReadLine());
@@ -72,7 +72,7 @@ public class Menu{
     {   
             var count = 1;
             Console.WriteLine("What would you like to do?.\n");
-            foreach (string option in Enum.GetNames(typeof(MenuOptions)))
+            foreach (string option in _menuOptions)
             {
                 Console.WriteLine($"\t{count}. {option}");
                 count ++;

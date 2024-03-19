@@ -32,7 +32,7 @@ public class Task{
         return lst;
     }
 
-    public void ListAllTasks(List<Task> lst)
+    public void ListUserTasks(List<Task> lst)
     {
         foreach (Task t in lst)
         {
@@ -46,4 +46,12 @@ public class Task{
         var pVal = GetPointVal();
         Console.WriteLine($">>{name} is worth {pVal} points.");
     }
+
+        public string SaveStringInFile()
+    {
+        var name = GetName();
+        var points = GetPointVal();
+        return $"{name}:{points}";
+    }
+
 }

@@ -5,7 +5,8 @@ public class Middle : Child {
     private int _extracurricularLevel;
 
 
-    public Middle(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn) : base (age, name, rLevel, hLevel, password, loggedIn)
+
+    public Middle(int age, string name, int rLevel, int hLevel, int ecLevel, string password, bool loggedIn, int range) : base (age, name, rLevel, hLevel, password, loggedIn, range)
     {
     
         _extracurricularLevel = ecLevel;
@@ -25,4 +26,6 @@ public class Middle : Child {
         var rate = age * rLevel * hLevel * ecLevel;
         return rate;
     }
+
+
 }

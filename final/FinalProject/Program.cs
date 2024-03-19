@@ -6,11 +6,12 @@ class Program
     {
         
         Console.WriteLine("Hello FinalProject World!");
-        Primary max = new Primary(5, "Max", 1, 1, "MaxoRama5", false);
-        Primary milo = new Primary(7, "Milo", 2, 2, "MiloMan7", false);
-        Elementary roman = new Elementary(9, "Roman", 3, 3, 2, "RowRow9", false);
-        Middle bane = new Middle(11, "Bane", 4, 4, 5, "Baniac11", false);
+        Primary max = new Primary(5, "Max", 1, 1, "MaxoRama5", false, 15);
+        Primary milo = new Primary(7, "Milo", 2, 2, "MiloMan7", false, 15);
+        Elementary roman = new Elementary(9, "Roman", 3, 3, 2, "RowRow9", false, 30);
+        Middle bane = new Middle(11, "Bane", 4, 4, 5, "Baniac11", false, 50);
         Task task = new Task("",0);
+        TaskFile file = new TaskFile();
         List<Child> _children = [max, milo, roman, bane];
         List<Task> _allTasks = new List<Task>();
         Menu menu = new Menu();
@@ -19,6 +20,7 @@ class Program
         var running = "yes";
         do{
             menu.DisplayOptions(user);
+            file.Load(_allTasks, user);
             Console.Write("\nChoose an option.");
             var choice = Convert.ToInt32(Console.ReadLine());
 
@@ -33,10 +35,15 @@ class Program
                     Console.WriteLine("Write record task methods.");
                     break;
                 case 3:
-                    //view list of tasks
-                    task.ListAllTasks(_allTasks);
+                    // list your tasks.
+                    task.ListUserTasks(_allTasks);
                     break;
                 case 4:
+                    //save file
+                    var personalTasks = user.GetTasks(_allTasks);
+                    file.Save(personalTasks, user);
+                    break;
+                case 5:
                     //Quit
                     Console.Write("Are you sure you want to quit? y/n");
                     var response = Convert.ToString(Console.Read());
