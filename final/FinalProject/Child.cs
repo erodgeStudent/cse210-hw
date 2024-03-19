@@ -6,22 +6,18 @@ public class Child
 {   
     private int _age;
     private string _name;
-    private int _responsibilityLevel;
-    private int _homeworkLevel;
     private string _password;
     private string _filename;
     private int _points;
-    public int _range;
+    public int _goal = 0;
     
     private bool _loggedIn;
     public List<Task> _userTasks = new List<Task>();
 
-    public Child(int age, string name, int rLevel, int hLevel, string password, bool loggedIn)
+    public Child(int age, string name, string password, bool loggedIn)
     {
         _age = age;
         _name = name;
-        _responsibilityLevel = rLevel;
-        _homeworkLevel = hLevel;
         _password = password;
         _loggedIn = loggedIn;
 
@@ -32,29 +28,10 @@ public class Child
         return _age;
     }
 
-    public int GetRLevel()
-    {
-        return _responsibilityLevel;
-    }
-
     public string SaveFile(){
         var name = GetName();
         _filename = name;
         return _filename;
-    }
-
-    public int GetHLevel()
-    {
-        return _homeworkLevel;
-    }
-
-    public virtual int CalculatePointRate()
-    {
-        var age = GetAge();
-        var rLevel = GetRLevel();
-        var hLevel = GetHLevel();
-        var rate = age * rLevel * hLevel;
-        return rate;
     }
 
     public void SetPassword(){
@@ -75,19 +52,14 @@ public class Child
 
     public List<string> GetTasks()
     {
-        Console.WriteLine("inside GetTasks");
         List<string> childTasks = new List<string>();
-        var range = GetRange();
         Console.WriteLine("Saving:");
         foreach (Task t in _userTasks)
         {
-            // var points = t.GetPointVal();
-            // if (points < range){
                 var stringSave = t.SaveStringInFile();
                 childTasks.Add(stringSave);
                 Console.WriteLine(stringSave);
                 Thread.Sleep(1000);
-            // }
         }
         return childTasks;
     }
@@ -102,9 +74,14 @@ public class Child
         return _points;
     }
 
-    public int GetRange()
+    public int GetGoal()
     {
-        return _range;
+        return _goal;
+    }
+
+    public virtual string Reward()
+    {
+        return "Here is your reward.";
     }
 
 

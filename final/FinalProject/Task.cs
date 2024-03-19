@@ -4,6 +4,7 @@ using System.Dynamic;
 public class Task{
     private string _name;
     private int _pointVal;
+    private bool _complete;
 
     public Task(string name, int pointVal){
         _name = name;
@@ -20,7 +21,7 @@ public class Task{
         return _pointVal;
     }
 
-    public List<Task> AddNewTask(Child c)
+    public virtual List<Task> AddNewTask(Child c)
     {   
         Console.WriteLine("inside add new task");
         var lst = c._userTasks;
@@ -50,11 +51,15 @@ public class Task{
         Console.WriteLine($">>{name} is worth {pVal} points.");
     }
 
-        public string SaveStringInFile()
+    public virtual string SaveStringInFile()
     {
         var name = GetName();
         var points = GetPointVal();
         return $"{name}:{points}";
+    }
+
+    public virtual void SetFrequency(){
+        //7 days from now, change to not finished. 
     }
 
 }

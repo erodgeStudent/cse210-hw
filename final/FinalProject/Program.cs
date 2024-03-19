@@ -6,10 +6,10 @@ class Program
     {
         
         Console.WriteLine("Hello FinalProject World!");
-        Primary max = new Primary(5, "Max", 1, 1, "MaxoRama5", false);
-        Primary milo = new Primary(7, "Milo", 2, 2, "MiloMan7", false);
-        Elementary roman = new Elementary(9, "Roman", 3, 3, 2, "RowRow9", false);
-        Middle bane = new Middle(11, "Bane", 4, 4, 5, "Baniac11", false);
+        Primary max = new Primary(5, "Max", "MaxoRama5", false);
+        Primary milo = new Primary(7, "Milo", "MiloMan7", false);
+        Elementary roman = new Elementary(9, "Roman", "RowRow9", false);
+        Middle bane = new Middle(11, "Bane", "Baniac11", false);
         Task task = new Task("",0);
         TaskFile file = new TaskFile();
         List<Child> _children = [max, milo, roman, bane];
