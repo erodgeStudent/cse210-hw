@@ -10,7 +10,7 @@ class Program
         Primary milo = new Primary(7, "Milo", "MiloMan7", false);
         Elementary roman = new Elementary(9, "Roman", "RowRow9", false);
         Middle bane = new Middle(11, "Bane", "Baniac11", false);
-        Task task = new Task("",0);
+        Task task = new Task("",0, false);
         TaskFile file = new TaskFile();
         List<Child> _children = [max, milo, roman, bane];
         Menu menu = new Menu();
@@ -21,15 +21,16 @@ class Program
             menu.DisplayOptions(user);
             
             Console.Write("\nChoose an option.");
-            var choice = Convert.ToInt32(Console.ReadLine());
+            int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
                     //add new task
-                    Task task1 = new Task("",0);
-                    task1 = menu.ChooseTask();
-                    task.AddNewTask(user);
+                    Task task1 = new Task("",0, false);
+                    task1 = menu.ChooseTaskType();
+                    // task.AddNewTask(user);
+                    user.AddTask(task1);
                     break;
                 case 2:
                     //record task complete

@@ -84,5 +84,11 @@ public class Child
         return "Here is your reward.";
     }
 
+    public virtual List<Task> AddTask(Task t)
+    {
+        _userTasks.Add(t);
+        return _userTasks;
+    }
+
 
 }

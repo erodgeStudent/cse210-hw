@@ -86,16 +86,16 @@ public class Menu{
         Weekly
     };
 
-    public Task ChooseTask()
+    public Task ChooseTaskType()
     {   
-        Task task1 = new Task("", 0);
+        Task task1 = new Task("", 0, false);
         Console.WriteLine("Enter task name: ");
         string name = Console.ReadLine();
         Console.WriteLine("How many points is this worth? ");
         int pointVal = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Which type of task is it?");
         var count = 1;
-        foreach (int i in Enum.GetValues(typeof(_taskOptions)))
+        foreach (string i in Enum.GetNames(typeof(_taskOptions)))
         {
             Console.WriteLine($"{count}. {i}");
             count ++;
@@ -104,13 +104,13 @@ public class Menu{
         switch (num)
         {
             case 1:
-                task1 = new Single(name, pointVal);
+                task1 = new Single(name, pointVal, false);
                 break;
             case 2:
-                task1 = new Daily(name, pointVal);
+                task1 = new Daily(name, pointVal, false);
                 break;
             case 3:
-                task1 = new Weekly(name, pointVal);
+                task1 = new Weekly(name, pointVal, false);
                 break;
             default:
                 Console.WriteLine("Error. Try again");

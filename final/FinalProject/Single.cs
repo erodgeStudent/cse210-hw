@@ -1,6 +1,6 @@
 using System;
 class Single : Task {
-    public Single(string name, int pointVal) : base (name, pointVal)
+    public Single(string name, int pointVal, bool complete) : base (name, pointVal, complete)
     {}
 
     public override string SaveStringInFile()
@@ -8,7 +8,7 @@ class Single : Task {
         var name = GetName();
         var points = GetPointVal();
         var complete = CheckIsComplete();
-        return $"{name}:{points}:{complete}";
+        return $"{GetType()}={name}:{points}:{complete}";
     }
     
 
