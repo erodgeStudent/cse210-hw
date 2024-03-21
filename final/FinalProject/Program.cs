@@ -27,6 +27,8 @@ class Program
             {
                 case 1:
                     //add new task
+                    Task task1 = new Task("",0);
+                    task1 = menu.ChooseTask();
                     task.AddNewTask(user);
                     break;
                 case 2:
@@ -64,12 +66,5 @@ class Program
                     break;
             }
         } while (running == "yes");
-
-
-
-
-
-
-
     }
 }

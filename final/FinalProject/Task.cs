@@ -1,10 +1,11 @@
 using System;
 using System.Dynamic;
+using System.Globalization;
 
 public class Task{
     private string _name;
     private int _pointVal;
-    private bool _complete;
+    private bool _complete = false;
 
     public Task(string name, int pointVal){
         _name = name;
@@ -48,7 +49,11 @@ public class Task{
     {
         var name = GetName();
         var pVal = GetPointVal();
-        Console.WriteLine($">>{name} is worth {pVal} points.");
+        var complete = CheckIsComplete();
+        var check = "[ ]";
+        if (complete == true)
+        {check = "[X]"; }
+        Console.WriteLine($">> {check} : {name} is worth {pVal} points.");
     }
 
     public virtual string SaveStringInFile()
@@ -59,7 +64,19 @@ public class Task{
     }
 
     public virtual void SetFrequency(){
-        //7 days from now, change to not finished. 
+        //start timer over at 9 am every day.
+        DateTime tomorrowAtNineAM = DateTime.Now.AddDays(1).AddHours(9);
+        DateTime currentTime = DateTime.Now;
+    }
+
+    public virtual bool CheckIsComplete()
+    {
+        return _complete;
+    }
+
+    public virtual void CheckOffTask()
+    {
+        _complete = true;
     }
 
 }
