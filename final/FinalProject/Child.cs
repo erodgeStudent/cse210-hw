@@ -69,6 +69,10 @@ public class Child
         return _loggedIn;
     }
 
+    public void AddUserPoints(int points)
+    {
+        _points += points;
+    }
     public int GetPoints()
     {
         return _points;
@@ -89,6 +93,16 @@ public class Child
         _userTasks.Add(t);
         return _userTasks;
     }
+
+    public void ListUserTasks()
+    {   
+        foreach (Task t in _userTasks)
+        {
+            t.DisplayTaskString();
+        }
+    }
+
+    
 
 
 }

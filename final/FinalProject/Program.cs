@@ -29,21 +29,17 @@ class Program
                     //add new task
                     Task task1 = new Task("",0, false);
                     task1 = menu.ChooseTaskType();
-                    // task.AddNewTask(user);
                     user.AddTask(task1);
                     break;
                 case 2:
                     //record task complete
-                    Console.WriteLine("Write record task methods.");
+                    Task task2 = new Task("",0,false);
+                    int newPoints = task2.RecordCompletedTask();
+                    user.AddUserPoints(newPoints);
                     break;
                 case 3:
                     // list your tasks.
-                    // task.ListUserTasks(user);
-                    List<Task> lst = user._userTasks;
-                    foreach (Task t in lst)
-                    {
-                        t.DisplayTaskString();
-                    }
+                    user.ListUserTasks();
                     break;
                 case 4:
                     //save file
@@ -52,6 +48,8 @@ class Program
                     break;
                 case 5:
                     //Quit
+                    int points = user.GetPoints();
+                    Console.WriteLine($"Great job! You have {points}");
                     Console.Write("Are you sure you want to quit? y/n");
                     var response = Convert.ToString(Console.Read());
                     if (response == "y")

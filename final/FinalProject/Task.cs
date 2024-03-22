@@ -23,30 +23,9 @@ public class Task{
         return _pointVal;
     }
 
-    public virtual List<Task> AddNewTask(Child c)
-    {   
-        Console.WriteLine("inside add new task");
-        var lst = c._userTasks;
-        Console.WriteLine("Enter task name: ");
-        string name = Console.ReadLine();
-        Console.WriteLine("How many points is this worth? ");
-        int pointVal = Convert.ToInt32(Console.ReadLine());
-        Task newTask = new Task(name, pointVal, false);
-        lst.Add(newTask);
-        return lst;
-    }
 
-    // public void ListUserTasks(Child c)
-    // {   
-    //     Console.WriteLine("inside list usertasks");
-    //     var lst = c._userTasks;
-    //     foreach (Task t in lst)
-    //     {
-    //         t.DisplayTaskString();
-    //     }
-    // }
 
-    public void DisplayTaskString()
+    public virtual void DisplayTaskString()
     {
         var name = GetName();
         var pVal = GetPointVal();
@@ -65,20 +44,33 @@ public class Task{
         return $"{GetType()}={name}:{points}:{complete}";
     }
 
-    public virtual void SetFrequency(){
+    public virtual void SetFrequency(Task t){
         //start timer over at 9 am every day.
         DateTime tomorrowAtNineAM = DateTime.Now.AddDays(1).AddHours(9);
         DateTime currentTime = DateTime.Now;
     }
 
-    public virtual bool CheckIsComplete()
+    public bool CheckIsComplete()
     {
         return _complete;
     }
 
-    public virtual void CheckOffTask()
+    public void CheckOffTask()
     {
         _complete = true;
+    }
+
+    public void RenewTask()
+    {
+        _complete = false;
+    }
+
+    public int RecordCompletedTask()
+    {
+        CheckOffTask();
+        int pointVal = GetPointVal();
+        Console.WriteLine($"You performed a task worth {pointVal} points.");
+        return pointVal;
     }
 
 }
