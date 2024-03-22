@@ -18,10 +18,12 @@ class Program
         file.Load(user);
         var running = "yes";
         do{
+            int points = file.GetTotalUserPts();
+            Console.WriteLine($"Great job! You have {points} points.");
             menu.DisplayOptions(user);
             
             Console.Write("\nChoose an option.");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            var choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
@@ -33,7 +35,7 @@ class Program
                     break;
                 case 2:
                     //record task complete
-                    Task task2 = new Task("",0,false);
+                    Task task2 = user.ChooseToRecord();
                     int newPoints = task2.RecordCompletedTask();
                     user.AddUserPoints(newPoints);
                     break;
@@ -48,10 +50,10 @@ class Program
                     break;
                 case 5:
                     //Quit
-                    int points = user.GetPoints();
+                    points = user.GetPoints();
                     Console.WriteLine($"Great job! You have {points}");
-                    Console.Write("Are you sure you want to quit? y/n");
-                    var response = Convert.ToString(Console.Read());
+                    Console.WriteLine("Are you sure you want to quit? y/n");
+                    string response = Convert.ToString(Console.Read());
                     if (response == "y")
                         {
                             running = "no";

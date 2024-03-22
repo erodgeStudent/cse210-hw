@@ -53,13 +53,10 @@ public class Child
     public List<string> GetTasks()
     {
         List<string> childTasks = new List<string>();
-        Console.WriteLine("Saving:");
         foreach (Task t in _userTasks)
         {
                 var stringSave = t.SaveStringInFile();
                 childTasks.Add(stringSave);
-                Console.WriteLine(stringSave);
-                Thread.Sleep(1000);
         }
         return childTasks;
     }
@@ -102,7 +99,20 @@ public class Child
         }
     }
 
-    
+    public Task ChooseToRecord()
+    {
+        ListUserTasks();
+        int index = GetCompletedTask();
+        Task record = _userTasks[index];  
+        return record;      
+    }
+
+    public int GetCompletedTask()
+        {
+            Console.Write("Which goal did you accomplish? ");
+            int response = Convert.ToInt32(Console.ReadLine());
+            return response-1;
+        }
 
 
 }

@@ -1,3 +1,0 @@
-Daily=Timed Reading:5:False
-Feed Dogs:50:False
-Weekly=Clean Laundry:25:False
