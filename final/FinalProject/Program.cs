@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Metadata;
 
 class Program
 {
@@ -6,66 +7,84 @@ class Program
     {
         
         Console.WriteLine("Hello FinalProject World!");
-        Primary max = new Primary(5, "Max", "MaxoRama5", false);
-        Primary milo = new Primary(7, "Milo", "MiloMan7", false);
-        Elementary roman = new Elementary(9, "Roman", "RowRow9", false);
-        Middle bane = new Middle(11, "Bane", "Baniac11", false);
+        var running = "yes";
+        List<Child> _children = new List<Child>();
         Task task = new Task("",0, false);
         TaskFile file = new TaskFile();
-        List<Child> _children = [max, milo, roman, bane];
-        Menu menu = new Menu();
-        Child user = menu.Login(_children);
-        file.Load(user);
-        var running = "yes";
+        UserFile userFile = new UserFile();
+        //previously loaded children
+        userFile.Load(_children);
         do{
-            int points = file.GetTotalUserPts();
-            Console.WriteLine($"Great job! You have {points} points.");
-            menu.DisplayOptions(user);
-            
-            Console.Write("\nChoose an option.");
-            var choice = Convert.ToInt32(Console.ReadLine());
-
-            switch (choice)
+            Menu menu = new Menu();
+            Child child = new Child("","", false);
+            int input = menu.StartMenu();
+            if (input == 1)
             {
-                case 1:
-                    //add new task
-                    Task task1 = new Task("",0, false);
-                    task1 = menu.ChooseTaskType();
-                    user.AddTask(task1);
-                    break;
-                case 2:
-                    //record task complete
-                    Task task2 = user.ChooseToRecord();
-                    int newPoints = task2.RecordCompletedTask();
-                    user.AddUserPoints(newPoints);
-                    break;
-                case 3:
-                    // list your tasks.
-                    user.ListUserTasks();
-                    break;
-                case 4:
-                    //save file
-                    List<string> personalTasks = user.GetTasks();
-                    file.Save(personalTasks, user);
-                    break;
-                case 5:
-                    //Quit
-                    points = user.GetPoints();
-                    Console.WriteLine($"Great job! You have {points}");
-                    Console.WriteLine("Are you sure you want to quit? y/n");
-                    string response = Convert.ToString(Console.Read());
-                    if (response == "y")
+                //add new user
+                Child newUser = child.DetermineAge();
+                _children.Add(newUser);} 
+            else if (input ==2)
+            {
+                //login as existing
+                if (_children.Count >= 1)
+                {
+                    Child user = child.ListAllChildren(_children);
+                    user.PasswordLogin();
+                    var loggedIn = "true";
+                    do{
+                        file.Load(user);
+                        int points = file.GetTotalUserPts();
+                        Console.WriteLine($"Great job! You have {points} points.");
+                        menu.DisplayOptions();
+                        var choice = Convert.ToInt32(Console.ReadLine());
+
+                        switch (choice)
                         {
-                            running = "no";
-                        }
-                    else{
-                        Console.WriteLine("Try again.");
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Try again.");
-                    break;
+                            case 1:
+                                //add new task
+                                Task task1 = new Task("",0, false);
+                                task1 = menu.ChooseTaskType();
+                                user.AddTask(task1);
+                                break;
+                            case 2:
+                                //record task complete
+                                Task task2 = user.ChooseToRecord();
+                                int newPoints = task2.RecordCompletedTask();
+                                user.AddUserPoints(newPoints);
+                                break;
+                            case 3:
+                                // list your tasks.
+                                user.ListUserTasks();
+                                break;
+                            case 4:
+                                //save file
+                                List<string> personalTasks = user.GetTasks();
+                                file.Save(personalTasks, user);
+                                break;
+                            case 5:
+                                //logout of user and return to menu
+                                List<string> quitpersonalTasks = user.GetTasks();
+                                file.Save(quitpersonalTasks, user);
+                                loggedIn = "false";
+                                break;
+                            
+                            default:
+                                Console.WriteLine("Try again.");
+                                break;
+                        } 
+                    }while (loggedIn == "true");
+                }
+                else {
+                    Console.WriteLine("List is empty.");
+                }
             }
-        } while (running == "yes");
-    }
+            else{
+                List<string> lst = userFile.CollectUsers(_children);
+                userFile.Save(lst);
+                running = "no";
+            }
+
+        }while (running == "yes");
+    }       
+
 }

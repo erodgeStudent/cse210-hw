@@ -1,0 +1,7 @@
+0
+Daily=Read Library Book:25:False
+Weekly=Feed Dogs:15:False
+Single=Take Trash Out:5:False
+Task=Read Library Book:25:False
+Task=Feed Dogs:15:False
+Task=Take Trash Out:5:False

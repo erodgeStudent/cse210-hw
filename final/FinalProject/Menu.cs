@@ -9,66 +9,24 @@ public class Menu{
         "Record Task Complete",
         "View Your Tasks",
         "Save",
-        "Quit"
+        "Logout"
     };
 
     public Menu(){}
 
-    public Child Login(List<Child> lst)
+    public int StartMenu()
     {
-        Console.WriteLine("\nSelect a user.");
-        int count = 1;
-        foreach (Child option in lst)
-        {
-            Console.WriteLine($"\t{count}. {option.GetName()}");
-            count ++;
-        }
-        var userChoice = Convert.ToInt32(Console.ReadLine());
-        int i = userChoice-1;
-        Child child = lst[i];
-        var p = Convert.ToString(child.GetPassword());
-        switch (userChoice)
-        {
-            case 1:
-                PasswordLogin(child, p);
-                break;
-            case 2:
-                PasswordLogin(child, p);
-                break;
-            case 3:
-                PasswordLogin(child, p);
-                break;
-            case 4:
-                PasswordLogin(child, p);
-                break;
-            default:
-
-                Console.WriteLine("Error. Try again.");
-                break;
-        }
-        return child;
+        Console.WriteLine("Welcome!");
+        Console.WriteLine("1. Add New User");
+        Console.WriteLine("2. Login");
+        Console.WriteLine("3. Quit");
+        Console.Write("Choose an option.");
+        int userInput = Convert.ToInt16(Console.ReadLine());
+        return userInput;
     }
 
-    public Child PasswordLogin(Child c, string password){
-        var correct = false;
-        do{
-            
-            Console.WriteLine(password);
-        Console.WriteLine("Enter your password");
-        string input = Console.ReadLine();
-        
-        if (input == password){
-            c.IsLoggedIn();
-            Console.WriteLine($"Welcome, {c.GetName()}!");
-            correct = true;
-        } else {
-            Console.WriteLine("Error. Try again.");
-            correct = false;
-        }
-        } while ( correct == false);
-        return c;
-    }
-    public void DisplayOptions(Child c)
+    
+    public void DisplayOptions()
     {   
             var count = 1;
             Console.WriteLine("What would you like to do?.\n");

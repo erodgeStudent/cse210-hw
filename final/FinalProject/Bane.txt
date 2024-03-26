@@ -1,0 +1,25 @@
+0
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
+Task=Read Scriptures:50:False
+Task=Shop For Headphones:5:False
