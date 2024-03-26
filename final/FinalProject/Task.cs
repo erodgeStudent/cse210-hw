@@ -26,7 +26,8 @@ public class Task{
 
 
     public virtual void DisplayTaskString()
-    {
+    {   
+        Console.WriteLine("Inside DisplayTaskString");
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
@@ -38,6 +39,7 @@ public class Task{
 
     public virtual string SaveStringInFile()
     {
+        Console.WriteLine("Inside DisplayTaskString");
         var name = GetName();
         var points = GetPointVal();
         var complete = CheckIsComplete();
@@ -52,6 +54,7 @@ public class Task{
 
     public bool CheckIsComplete()
     {
+        Console.WriteLine($"Inside CheckIsComplete: {_complete}");
         return _complete;
     }
 
@@ -66,11 +69,32 @@ public class Task{
     }
 
     public int RecordCompletedTask()
-    {
+    {   
+        Console.WriteLine("Inside RecordCompletedTask");
         CheckOffTask();
         int pointVal = GetPointVal();
         Console.WriteLine($"You performed a task worth {pointVal} points.");
         return pointVal;
+    }
+
+    public Task DetermineTask(string type, string name, int points, bool complete)
+    {
+        Console.WriteLine($"Inside DetermineTask {complete}");
+        Task task1 = new Task(name, points, complete);
+        switch (type)
+        {
+            case "Daily":
+                task1 = new Daily(name, points, complete);
+                break;
+            case "Single":
+                task1 = new Single(name, points, complete);
+                break;
+            case "Weekly":
+                task1 = new Weekly(name, points, complete);
+                break;
+            
+        }
+        return task1;
     }
 
 }

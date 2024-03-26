@@ -1,0 +1,4 @@
+25
+Weekly=Walk Dogs:25:True
+Daily=Read Scriptures:50:False
+Single=Take Trash Out:25:True

@@ -1,3 +1,0 @@
-0
-Daily=Read Scriptures:50:False
-Task=Read Scriptures:50:False

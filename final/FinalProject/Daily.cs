@@ -9,13 +9,14 @@ class Daily : Task
 
     public override void DisplayTaskString()
     {
+        Console.WriteLine("Inside Daily DisplayTaskString");
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
         var check = "[ ]";
         if (complete == true)
         {check = "[X]"; }
-        Console.WriteLine($">> {check} {name} is worth {pVal} points every day.");
+        Console.WriteLine($">> {check} {name} is worth {pVal} points.");
     }
 
     public override string SaveStringInFile()

@@ -8,14 +8,13 @@ public class Menu{
         "Add New Task",
         "Record Task Complete",
         "View Your Tasks",
-        "Save",
         "Logout"
     };
 
     public Menu(){}
 
     public int StartMenu()
-    {
+    {   Console.Clear();
         Console.WriteLine("Welcome!");
         Console.WriteLine("1. Add New User");
         Console.WriteLine("2. Login");

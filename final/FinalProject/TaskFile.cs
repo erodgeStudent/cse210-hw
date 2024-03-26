@@ -37,7 +37,8 @@ class TaskFile{
     }
 
     public void Load(Child c)
-    {
+    {   
+        // Console.Clear();
         var filename = $"{c.SaveFile()}.txt";
         var lst = c._userTasks;
         if (!File.Exists(filename))
@@ -62,12 +63,20 @@ class TaskFile{
 
     public void CreateTask(string stringSave, List<Task> lst)
     {
+        Task task = new Task("",0,false);
         string[] strArray = stringSave.Split("=");
+        string type = strArray[0];
         string[] paramArray = strArray[1].Split(":");
         string name = paramArray[0];
         int points = Convert.ToInt32(paramArray[1]);
         bool complete = Convert.ToBoolean(paramArray[2]);
-        Task task = new Task(name, points, complete);
-        lst.Add(task);
+        
+        Task uploaded = task.DetermineTask(type, name, points, complete);
+        if (complete == true)
+        {
+            uploaded.CheckOffTask();
+        }
+        Console.WriteLine($"CreateTask: {complete}");
+        lst.Add(uploaded);
     }
 }

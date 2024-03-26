@@ -83,19 +83,15 @@ public class Child
         {
             case int i when i <= 7:
                 Primary primary = new Primary(name,passWd,false);
-                primary.DisplayUser();
                 return primary;
             case int i when i >= 8 && i <= 10:
                 Elementary elementary = new Elementary(name, passWd,false);
-                elementary.DisplayUser();
                 return elementary;
             case int i when i >= 11 && i <= 13:
                 Middle middle = new Middle(name, passWd, false);
-                middle.DisplayUser();
                 return middle;
             default:
                 High high = new High(name, passWd, false);
-                high.DisplayUser();
                 return high;
 
         }
@@ -103,9 +99,7 @@ public class Child
 
     }
 
-    public void DisplayUser(){
-        Console.WriteLine($"You added: {GetName()}");
-    }
+
 
     public void PasswordLogin(){
         var correct = false;
@@ -186,6 +180,12 @@ public class Child
 
     public bool IsLoggedIn(){
         _loggedIn = true;
+        return _loggedIn;
+    }
+
+    public bool LogOut()
+    {
+        _loggedIn = false;
         return _loggedIn;
     }
 

@@ -30,9 +30,10 @@ class Program
                 {
                     Child user = child.ListAllChildren(_children);
                     user.PasswordLogin();
+                    file.Load(user);
                     var loggedIn = "true";
                     do{
-                        file.Load(user);
+                        
                         int points = file.GetTotalUserPts();
                         Console.WriteLine($"Great job! You have {points} points.");
                         menu.DisplayOptions();
@@ -57,14 +58,10 @@ class Program
                                 user.ListUserTasks();
                                 break;
                             case 4:
-                                //save file
-                                List<string> personalTasks = user.GetTasks();
-                                file.Save(personalTasks, user);
-                                break;
-                            case 5:
                                 //logout of user and return to menu
                                 List<string> quitpersonalTasks = user.GetTasks();
                                 file.Save(quitpersonalTasks, user);
+                                user.LogOut();
                                 loggedIn = "false";
                                 break;
                             

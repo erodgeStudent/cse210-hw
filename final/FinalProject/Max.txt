@@ -1,4 +1,0 @@
-5
-Daily=Make Bed:5:True
-Single=Rake Leaves:50:False
-Weekly=Take Trash Out:15:False

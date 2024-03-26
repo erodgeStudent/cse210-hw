@@ -14,7 +14,15 @@ class Single : Task {
 
     public override void DisplayTaskString()
     {
-        base.DisplayTaskString();
+        Console.WriteLine("Inside Single DisplayTaskString");
+        var name = GetName();
+        var pVal = GetPointVal();
+        var complete = CheckIsComplete();
+        var check = "[ ]";
+        if (complete == true)
+        {check = "[X]"; }
+        Console.WriteLine($">> {check} {name} is worth {pVal} points.");
+    
     }
 
 
