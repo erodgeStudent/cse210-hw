@@ -7,10 +7,8 @@ class Daily : Task
     public Daily(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
         _timeStamp = timestamp;
-        _timeToReset = new DateTime(DateTime.Now.Year,
-                                    DateTime.Now.Month,
-                                    DateTime.Now.Day + 1,
-                                    5,0,0);
+        TimeSpan ts = new TimeSpan(5,0,0); 
+        _timeToReset = _timeStamp.AddDays(1)+ts;
     }
 
     public override void DisplayTaskString()

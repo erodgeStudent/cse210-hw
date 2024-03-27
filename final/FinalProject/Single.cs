@@ -14,7 +14,6 @@ class Single : Task {
 
     public override void DisplayTaskString()
     {
-        Console.WriteLine("Inside Single DisplayTaskString");
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();

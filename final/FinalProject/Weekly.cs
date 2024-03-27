@@ -7,10 +7,8 @@ class Weekly : Task
     public Weekly(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
         _timestamp = timestamp;
-        _timeToReset =new DateTime(DateTime.Now.Year,
-                                    DateTime.Now.Month,
-                                    DateTime.Now.Day + 7,
-                                    5,0,0);
+        TimeSpan ts = new TimeSpan(5,0,0);
+        _timeToReset = _timestamp.AddDays(7)+ts;
     }
 
         public override void DisplayTaskString()

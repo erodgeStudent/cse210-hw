@@ -1,0 +1,4 @@
+65
+Single=Check Single#5#True
+Daily=Check Daily#15#True#3/27/2024 2:13:48 PM
+Weekly=Check the Weekly One#45#True#3/27/2024 2:14:03 PM
