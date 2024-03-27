@@ -26,9 +26,6 @@ public class Middle : Child {
             _password = password;
         }
     }
-    public override string Reward()
-    {
-        return base.Reward();
-    }
+
 
 }

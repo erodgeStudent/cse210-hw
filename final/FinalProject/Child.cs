@@ -12,11 +12,10 @@ public class Child
     private string _password;
     private string _filename;
     private int _points;
-    public int _goal = 0;
+    private int _goal = 0;
     
     private bool _loggedIn;
     public List<Task> _userTasks = new List<Task>();
-    // public List<Child> _children = new List<Child>();
 
     public Child(int age, string name, string password, bool loggedIn)
     {
@@ -201,14 +200,37 @@ public class Child
         return _points;
     }
 
+    public void RestartPoints()
+    {
+        _points = 0;
+    }
+
     public int GetGoal()
     {
         return _goal;
     }
 
-    public virtual string Reward()
+    public void DisplayPoints(){
+        Console.Clear();
+        TaskFile file1 = new TaskFile();
+        int points = file1.GetTotalUserPts();
+        int goal = GetGoal();
+        if (points < 0)
+        {
+            Console.WriteLine($"Great job! You have {points} / {goal}");
+        }
+        else{
+            Console.WriteLine("Let's start earning some points!");
+        }
+        Thread.Sleep(3000);
+    }
+
+    public void Reward()
     {
-        return "Here is your reward.";
+        Console.Clear();
+        Console.WriteLine( "You earned a Reward!");
+        Thread.Sleep(3000);
+        RestartPoints();
     }
 
     public virtual List<Task> AddTask(Task t)

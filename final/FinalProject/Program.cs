@@ -33,9 +33,7 @@ class Program
                     file.Load(user);
                     var loggedIn = "true";
                     do{
-                        
-                        int points = file.GetTotalUserPts();
-                        Console.WriteLine($"Great job! You have {points} points.");
+                        user.DisplayPoints();
                         menu.DisplayOptions();
                         var choice = Convert.ToInt32(Console.ReadLine());
 

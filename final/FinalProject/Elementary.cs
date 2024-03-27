@@ -26,8 +26,5 @@ public class Elementary : Child
         }
     }
 
-    public override string Reward()
-    {
-        return base.Reward();
-    }
+
 }

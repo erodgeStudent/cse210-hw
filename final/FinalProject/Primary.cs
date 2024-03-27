@@ -13,9 +13,6 @@ public class Primary : Child
         base.SetPassword();
     }
 
-    public override string Reward()
-    {
-        return base.Reward();
-    }
+
 
 }
