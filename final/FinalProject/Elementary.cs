@@ -21,6 +21,7 @@ public class Elementary : Child
     {
         int goal = GetGoal();
         Console.WriteLine($"You have {p} / {goal} points.");
+        Reward(p, goal);
         Thread.Sleep(3000);
     }
 

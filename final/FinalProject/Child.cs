@@ -223,16 +223,21 @@ public class Child
 
     public virtual void DisplayPoints(int p)
     {
-        Console.WriteLine($"You have {p}.");
+        int goal = GetGoal();
+        Console.WriteLine($"You have {p} / {goal} points.");
+        Reward(p, goal);
         Thread.Sleep(3000);
     }
 
-    public void Reward()
+    public void Reward(int p, int g)
     {
+        if (p >= g)
+        {
         Console.Clear();
         Console.WriteLine( "You earned a Reward!");
         Thread.Sleep(3000);
         RestartPoints();
+        }
     }
 
     public virtual List<Task> AddTask(Task t)
