@@ -63,15 +63,15 @@ class TaskFile{
 
     public void CreateTask(string stringSave, List<Task> lst)
     {
-        Task task = new Task("",0,false);
+        Task task = new Task("",0,false, default);
         string[] strArray = stringSave.Split("=");
         string type = strArray[0];
         string[] paramArray = strArray[1].Split(":");
         string name = paramArray[0];
         int points = Convert.ToInt32(paramArray[1]);
         bool complete = Convert.ToBoolean(paramArray[2]);
-        
-        Task uploaded = task.DetermineTask(type, name, points, complete);
+        // string time = paramArray[3];
+        Task uploaded = task.DetermineTask(type, name, points, complete, default);
         if (complete == true)
         {
             uploaded.CheckOffTask();

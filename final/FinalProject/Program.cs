@@ -9,7 +9,7 @@ class Program
         Console.WriteLine("Hello FinalProject World!");
         var running = "yes";
         List<Child> _children = new List<Child>();
-        Task task = new Task("",0, false);
+        Task task = new Task("",0, false, default);
         TaskFile file = new TaskFile();
         UserFile userFile = new UserFile();
         //previously loaded children
@@ -41,7 +41,7 @@ class Program
                         {
                             case 1:
                                 //add new task
-                                Task task1 = new Task("",0, false);
+                                Task task1 = new Task("",0, false, default);
                                 task1 = menu.ChooseTaskType();
                                 user.AddTask(task1);
                                 break;

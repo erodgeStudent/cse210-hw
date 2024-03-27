@@ -6,16 +6,24 @@ public class Task{
     private string _name;
     private int _pointVal;
     private bool _complete;
+    private DateTime _timestamp;
 
-    public Task(string name, int pointVal, bool complete){
+    public Task(string name, int pointVal, bool complete, DateTime timestamp)
+    {
         _name = name;
         _pointVal = pointVal;
         _complete = false;
+        _timestamp = timestamp;
     }
 
     public string GetName()
     {
         return _name;
+    }
+
+    public DateTime GetTimeStamp()
+    {
+        return _timestamp;
     }
 
     public int GetPointVal()
@@ -43,10 +51,11 @@ public class Task{
         var name = GetName();
         var points = GetPointVal();
         var complete = CheckIsComplete();
-        return $"{GetType()}={name}:{points}:{complete}";
+        var time = GetTimeStamp();
+        return $"{GetType()}={name}:{points}:{complete}"+time;
     }
 
-    public virtual void SetFrequency(Task t){
+    public virtual void SetFrequency(){
         //start timer over at 9 am every day.
         DateTime tomorrowAtNineAM = DateTime.Now.AddDays(1).AddHours(9);
         DateTime currentTime = DateTime.Now;
@@ -77,22 +86,22 @@ public class Task{
         return pointVal;
     }
 
-    public Task DetermineTask(string type, string name, int points, bool complete)
+    public Task DetermineTask(string type, string name, int points, bool complete, DateTime time)
     {
         // Console.WriteLine($"Inside DetermineTask {complete}");
-        Task task1 = new Task(name, points, complete);
+        Task task1 = new Task(name, points, complete, time);
         switch (type)
         {
             case "Daily":
-                task1 = new Daily(name, points, complete);
-                SetFrequency(task1);
+                task1 = new Daily(name, points, complete, time);
+                SetFrequency();
                 break;
             case "Single":
-                task1 = new Single(name, points, complete);
+                task1 = new Single(name, points, complete, time);
                 break;
             case "Weekly":
-                task1 = new Weekly(name, points, complete);
-                SetFrequency(task1);
+                task1 = new Weekly(name, points, complete, time);
+                SetFrequency();
                 break;
             
         }

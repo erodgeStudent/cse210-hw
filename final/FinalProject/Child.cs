@@ -131,8 +131,8 @@ public class Child
 
     public virtual string CreateNewPassword(){
         Console.WriteLine("Please set your password.\nMinimum 5 characters. ");
-        string password = Convert.ToString(Console.Read());
-        
+        string password = Convert.ToString(Console.ReadLine());
+        Console.WriteLine(password);
         if (password.Length >= 5)
         {
             Console.WriteLine("Password is stored.");
@@ -196,6 +196,7 @@ public class Child
 
     public bool LogOut()
     {
+        Console.Clear();
         _loggedIn = false;
         return _loggedIn;
     }

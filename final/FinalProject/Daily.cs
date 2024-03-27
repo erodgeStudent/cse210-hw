@@ -4,15 +4,16 @@ class Daily : Task
 {
     private DateTime _timeStamp;
     private DateTime _timeToReset;
-    public Daily(string name, int pointVal, bool complete) : base(name, pointVal, complete)
+    public Daily(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
-        _timeStamp = DateTime.Now;
-        _timeToReset = _timeStamp.AddDays(1).AddHours(9);
+        _timeStamp = timestamp;
+        _timeToReset = _timeStamp.AddMinutes(10);
     }
 
     public override void DisplayTaskString()
     {
         Console.WriteLine("Inside Daily DisplayTaskString");
+        SetFrequency();
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
@@ -27,18 +28,21 @@ class Daily : Task
         var name = GetName();
         var points = GetPointVal();
         var complete = CheckIsComplete();
-        return $"{GetType()}={name}:{points}:{complete}";
+        var time = GetTimeStamp();
+        return $"{GetType()}={name}:{points}:{complete}:{time}";
     }
 
-    public override void SetFrequency(Task t){
+    public override void SetFrequency(){
         //start timer over at 9 am every day.
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine(currentTime);
-        Console.WriteLine(_timeStamp);
-        
-        if (currentTime >= _timeToReset)
+        Console.WriteLine(Convert.ToString(currentTime));
+        Console.WriteLine(Convert.ToString(_timeStamp));
+        Console.WriteLine(Convert.ToString(_timeToReset));
+        Console.WriteLine("Inside set frequency daily");
+        int result = DateTime.Compare(currentTime, _timeToReset);
+        if (result > 0)
         {
-            t.RenewTask();
+            RenewTask();
         }
     }
 }
