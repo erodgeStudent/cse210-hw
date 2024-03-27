@@ -95,10 +95,7 @@ public class Child
             default:
                 High high = new High(a,name, passWd, false);
                 return high;
-
         }
-        
-
     }
 
 
@@ -133,10 +130,14 @@ public class Child
         return _filename;
     }
 
-    public void SetPassword(){
-        Console.Write("Please set your password: ");
+    public virtual void SetPassword(){
+        Console.Write("Please set your password.\nMinimum 5 characters. ");
         string password = Convert.ToString(Console.Read());
-        _password = password;
+        var min = new Regex(@".{5,}");
+        {
+            Console.WriteLine("Password is stored.");
+            _password = password;
+        }
     }
 
     public string GetPassword()

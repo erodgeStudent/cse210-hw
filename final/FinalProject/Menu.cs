@@ -8,6 +8,7 @@ public class Menu{
         "Add New Task",
         "Record Task Complete",
         "View Your Tasks",
+        "Change Password",
         "Logout"
     };
 

@@ -8,6 +8,11 @@ public class Primary : Child
     {
     }
 
+    public override void SetPassword()
+    {
+        base.SetPassword();
+    }
+
     public override string Reward()
     {
         return base.Reward();

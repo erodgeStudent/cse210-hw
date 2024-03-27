@@ -58,6 +58,9 @@ class Program
                                 user.ListUserTasks();
                                 break;
                             case 4:
+                                user.SetPassword();
+                                break;
+                            case 5:
                                 //logout of user and return to menu
                                 List<string> quitpersonalTasks = user.GetTasks();
                                 file.Save(quitpersonalTasks, user);
