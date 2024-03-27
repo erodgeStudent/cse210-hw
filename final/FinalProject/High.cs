@@ -19,19 +19,23 @@ public class High : Child {
         Thread.Sleep(3000);
     }
 
-    // public override void SetPassword()
-    // {
-    //     Console.WriteLine("Please set your password.\nCapital letter, number, special character, and 8 character minimum required. ");
-    //     string password = Convert.ToString(Console.Read());
-    //     var num = new Regex(@"[0-9]+");
-    //     var upper = new Regex(@"[A-Z]");
-    //     var min = new Regex(@".{8,}");
-    //     var specialChars = new Regex(@"[!#$%^&()_.-]");
-    //     var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password) && specialChars.IsMatch(password);
-    //     if (valid)
-    //     {
-    //         Console.WriteLine("New password stored.");
-    //         _password = password;
-    //     }
-    // }
+    public override string CreateNewPassword()
+    {
+        Console.WriteLine("Please set your password.\nCapital letter, number, special character, and 8 character minimum required. ");
+        string password = Convert.ToString(Console.ReadLine());
+        var num = new Regex(@"[0-9]+");
+        var upper = new Regex(@"[A-Z]");
+        var min = new Regex(@".{8,}");
+        var specialChars = new Regex(@"[!#$%^&()_.-]");
+        var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password) && specialChars.IsMatch(password);
+        if (valid)
+        {
+            Console.WriteLine("New password stored.");
+        }
+        Thread.Sleep(2000);
+        Console.Clear();
+        return password;
+    }
+
+
 }

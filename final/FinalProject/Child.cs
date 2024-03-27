@@ -142,7 +142,7 @@ public class Child
         return password;
     }
 
-    public void SetPassword()
+    public  void SetPassword()
     {
         var s = CreateNewPassword();
         _password = s;

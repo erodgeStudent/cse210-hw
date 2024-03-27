@@ -62,6 +62,8 @@ class Program
                             case 4:
                             //not working yet.
                                 user.SetPassword();
+                                List<string> lst = userFile.CollectUsers(_children);
+                                userFile.Save(lst);
                                 break;
                             case 5:
                                 //logout of user and return to menu

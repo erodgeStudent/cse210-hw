@@ -22,20 +22,20 @@ public class Middle : Child {
         Thread.Sleep(3000);
     }
 
-    // public override void SetPassword()
-    // {
-    //     Console.WriteLine("Please set your password.\nCapital letter, number, and 8 character minimum required. ");
-    //     string password = Convert.ToString(Console.Read());
-    //     var num = new Regex(@"[0-9]+");
-    //     var upper = new Regex(@"[A-Z]");
-    //     var min = new Regex(@".{8,}");
-    //     var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password);
-    //     if (valid)
-    //     {
-    //         Console.WriteLine("New password stored.");
-    //         _password = password;
-    //     }
-    // }
-
-
+    public override string CreateNewPassword()
+    {
+        Console.WriteLine("Please set your password.\nCapital letter, number, special character, and 8 character minimum required. ");
+        string password = Convert.ToString(Console.ReadLine());
+        var validate = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+        var valid = validate.IsMatch(password);
+        if (valid)
+        {
+            Console.WriteLine("New password stored.");
+        }else{
+            Console.WriteLine("Requirements not met");
+        }
+        Thread.Sleep(2000);
+        Console.Clear();
+        return password;
+    }
 }
