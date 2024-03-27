@@ -60,7 +60,6 @@ class Program
                                 user.ListUserTasks();
                                 break;
                             case 4:
-                            //not working yet.
                                 user.SetPassword();
                                 List<string> lst = userFile.CollectUsers(_children);
                                 userFile.Save(lst);
