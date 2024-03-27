@@ -129,14 +129,23 @@ public class Child
         return _filename;
     }
 
-    public virtual void SetPassword(){
-        Console.Write("Please set your password.\nMinimum 5 characters. ");
+    public virtual string CreateNewPassword(){
+        Console.WriteLine("Please set your password.\nMinimum 5 characters. ");
         string password = Convert.ToString(Console.Read());
-        var min = new Regex(@".{5,}");
+        
+        if (password.Length >= 5)
         {
             Console.WriteLine("Password is stored.");
-            _password = password;
         }
+        Thread.Sleep(2000);
+        Console.Clear();
+        return password;
+    }
+
+    public void SetPassword()
+    {
+        var s = CreateNewPassword();
+        _password = s;
     }
 
     public string GetPassword()
@@ -211,7 +220,7 @@ public class Child
     }
 
     public void DisplayPoints(){
-        Console.Clear();
+        
         TaskFile file1 = new TaskFile();
         int points = file1.GetTotalUserPts();
         int goal = GetGoal();

@@ -12,20 +12,20 @@ public class Middle : Child {
     {
     }
 
-    public override void SetPassword()
-    {
-        Console.Write("Please set your password.\nCapital letter, number, and 8 character minimum required. ");
-        string password = Convert.ToString(Console.Read());
-        var num = new Regex(@"[0-9]+");
-        var upper = new Regex(@"[A-Z]");
-        var min = new Regex(@".{8,}");
-        var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password);
-        if (valid)
-        {
-            Console.WriteLine("New password stored.");
-            _password = password;
-        }
-    }
+    // public override void SetPassword()
+    // {
+    //     Console.WriteLine("Please set your password.\nCapital letter, number, and 8 character minimum required. ");
+    //     string password = Convert.ToString(Console.Read());
+    //     var num = new Regex(@"[0-9]+");
+    //     var upper = new Regex(@"[A-Z]");
+    //     var min = new Regex(@".{8,}");
+    //     var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password);
+    //     if (valid)
+    //     {
+    //         Console.WriteLine("New password stored.");
+    //         _password = password;
+    //     }
+    // }
 
 
 }
