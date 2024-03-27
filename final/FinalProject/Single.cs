@@ -25,18 +25,4 @@ class Single : Task {
     
     }
 
-
-    // public override void SetFrequency()
-    // {
-    //     DateTime tmrAtNineAM =  DateTime.Now.AddDays(1).AddHours(9);
-    //     DateTime currentTime = DateTime.Now;
-    //     Console.WriteLine(tmrAtNineAM);
-    //     var done = CheckIsComplete();
-    //     if (done == true)
-    //     {
-            
-    //     }
-    // }
-
-
 }

@@ -15,7 +15,6 @@ class Daily : Task
 
     public override void DisplayTaskString()
     {
-        Console.WriteLine("Inside Daily DisplayTaskString");
         SetFrequency();
         var name = GetName();
         var pVal = GetPointVal();
@@ -38,10 +37,6 @@ class Daily : Task
     public override void SetFrequency(){
         //start timer over at 9 am every day.
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine(Convert.ToString(currentTime));
-        Console.WriteLine(Convert.ToString(GetTimeStamp()));
-        Console.WriteLine(Convert.ToString(_timeToReset));
-        Console.WriteLine("Inside set frequency daily");
         int result = DateTime.Compare(currentTime, _timeToReset);
         if (result > 0)
         {

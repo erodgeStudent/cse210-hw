@@ -2,7 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 
 public class High : Child {
-    private int _goal;
+    private int _highGoal;
     private string _password;
 
 
@@ -10,8 +10,12 @@ public class High : Child {
     {
     }
 
-    public override void SetGoal() => _goal = 1000;
+    public override void SetGoal() => _highGoal = 1000;
 
+    public override int GetGoal()
+    {
+        return _highGoal;
+    }
     public override void DisplayPoints(int p)
     {
         int goal = GetGoal();

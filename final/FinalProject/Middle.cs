@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 public class Middle : Child {
     
-    private int _goal;
+    private int _middleGoal;
     private string _password;
 
 
@@ -12,7 +12,12 @@ public class Middle : Child {
     {
     }
 
-    public override void SetGoal() => _goal = 500;
+    public override void SetGoal() => _middleGoal = 500;
+
+    public override int GetGoal()
+    {
+        return _middleGoal;
+    }
 
     public override void DisplayPoints(int p)
     {

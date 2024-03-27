@@ -7,12 +7,14 @@ class Weekly : Task
     public Weekly(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
         _timestamp = timestamp;
-        _timeToReset = _timestamp.AddDays(7).AddHours(9);
+        _timeToReset =new DateTime(DateTime.Now.Year,
+                                    DateTime.Now.Month,
+                                    DateTime.Now.Day + 7,
+                                    5,0,0);
     }
 
         public override void DisplayTaskString()
     {
-        // Console.WriteLine("Inside Weekly DisplayTaskString");
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
@@ -34,10 +36,6 @@ class Weekly : Task
     public override void SetFrequency()
     {
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine(Convert.ToString(currentTime));
-        Console.WriteLine(Convert.ToString(GetTimeStamp()));
-        Console.WriteLine(Convert.ToString(_timeToReset));
-        Console.WriteLine("Inside set frequency weekly");
         int result = DateTime.Compare(currentTime, _timeToReset);
         if (result > 0)
         {

@@ -39,7 +39,6 @@ class TaskFile{
 
     public void Load(Child c)
     {   
-        // Console.Clear();
         var filename = $"{c.SaveFile()}.txt";
         var lst = c._userTasks;
         if (!File.Exists(filename))

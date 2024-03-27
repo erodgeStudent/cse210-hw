@@ -3,14 +3,19 @@ using System.Text.RegularExpressions;
 
 public class Elementary : Child
 {   
-    private int _goal;
+    private int _elementaryGoal;
     private string _password;
 
     public Elementary(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
     {
     }
 
-    public override void SetGoal() => _goal = 150;
+    public override void SetGoal() => _elementaryGoal = 150;
+
+    public override int GetGoal()
+    {
+        return _elementaryGoal;
+    }
 
     public override void DisplayPoints(int p)
     {

@@ -12,7 +12,7 @@ public class Child
     private string _password;
     private string _filename;
     private int _points;
-    private int _goal;
+    private int _childGoal;
     
     private bool _loggedIn;
     public List<Task> _userTasks = new List<Task>();
@@ -132,7 +132,6 @@ public class Child
     public virtual string CreateNewPassword(){
         Console.WriteLine("Please set your password.\nMinimum 5 characters. ");
         string password = Convert.ToString(Console.ReadLine());
-        Console.WriteLine(password);
         if (password.Length >= 5)
         {
             Console.WriteLine("Password is stored.");
@@ -215,11 +214,11 @@ public class Child
         _points = 0;
     }
 
-    public virtual void SetGoal() => _goal = 0;
+    public virtual void SetGoal() => _childGoal = 0;
 
-    public int GetGoal()
+    public virtual int GetGoal()
     {
-        return _goal;
+        return _childGoal;
     }
 
     public virtual void DisplayPoints(int p)

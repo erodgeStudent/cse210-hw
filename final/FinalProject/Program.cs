@@ -36,8 +36,6 @@ class Program
                         // 
                         int points = file.GetTotalUserPts();
                         user.SetGoal();
-                        int goal = user.GetGoal();
-                        Console.WriteLine(goal);
                         user.DisplayPoints(points);
                         menu.DisplayOptions();
                         var choice = Convert.ToInt32(Console.ReadLine());
