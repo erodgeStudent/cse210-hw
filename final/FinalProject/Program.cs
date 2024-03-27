@@ -33,7 +33,12 @@ class Program
                     file.Load(user);
                     var loggedIn = "true";
                     do{
-                        user.DisplayPoints();
+                        // 
+                        int points = file.GetTotalUserPts();
+                        user.SetGoal();
+                        int goal = user.GetGoal();
+                        Console.WriteLine(goal);
+                        user.DisplayPoints(points);
                         menu.DisplayOptions();
                         var choice = Convert.ToInt32(Console.ReadLine());
 
@@ -47,9 +52,8 @@ class Program
                                 break;
                             case 2:
                                 //record task complete
-                                Task task2 = user.ChooseToRecord();
-                                int newPoints = task2.RecordCompletedTask();
-                                user.AddUserPoints(newPoints);
+                                user.RecordTaskPoints();
+                                file.Save(user);
                                 break;
                             case 3:
                                 // list your tasks.
@@ -61,8 +65,7 @@ class Program
                                 break;
                             case 5:
                                 //logout of user and return to menu
-                                List<string> quitpersonalTasks = user.GetTasks();
-                                file.Save(quitpersonalTasks, user);
+                                file.Save(user);
                                 user.LogOut();
                                 loggedIn = "false";
                                 break;

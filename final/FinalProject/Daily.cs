@@ -7,7 +7,10 @@ class Daily : Task
     public Daily(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
         _timeStamp = timestamp;
-        _timeToReset = _timeStamp.AddMinutes(10);
+        _timeToReset = new DateTime(DateTime.Now.Year,
+                                    DateTime.Now.Month,
+                                    DateTime.Now.Day + 1,
+                                    5,0,0);
     }
 
     public override void DisplayTaskString()
@@ -29,14 +32,14 @@ class Daily : Task
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}:{points}:{complete}:{time}";
+        return $"{GetType()}={name}#{points}#{complete}#"+time;
     }
 
     public override void SetFrequency(){
         //start timer over at 9 am every day.
         DateTime currentTime = DateTime.Now;
         Console.WriteLine(Convert.ToString(currentTime));
-        Console.WriteLine(Convert.ToString(_timeStamp));
+        Console.WriteLine(Convert.ToString(GetTimeStamp()));
         Console.WriteLine(Convert.ToString(_timeToReset));
         Console.WriteLine("Inside set frequency daily");
         int result = DateTime.Compare(currentTime, _timeToReset);

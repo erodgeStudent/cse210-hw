@@ -6,7 +6,7 @@ class Weekly : Task
     private DateTime _timeToReset;
     public Weekly(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
-        _timestamp = DateTime.Now;
+        _timestamp = timestamp;
         _timeToReset = _timestamp.AddDays(7).AddHours(9);
     }
 
@@ -28,17 +28,18 @@ class Weekly : Task
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}:{points}:{complete}:{time}";
+        return $"{GetType()}={name}#{points}#{complete}#"+time;
     }
 
     public override void SetFrequency()
     {
-        //start timer over at 9 am every day.
         DateTime currentTime = DateTime.Now;
-        Console.WriteLine(currentTime);
-        Console.WriteLine(_timestamp);
+        Console.WriteLine(Convert.ToString(currentTime));
+        Console.WriteLine(Convert.ToString(GetTimeStamp()));
+        Console.WriteLine(Convert.ToString(_timeToReset));
         Console.WriteLine("Inside set frequency weekly");
-        if (currentTime >= _timeToReset)
+        int result = DateTime.Compare(currentTime, _timeToReset);
+        if (result > 0)
         {
             RenewTask();
         }

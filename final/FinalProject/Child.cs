@@ -12,7 +12,7 @@ public class Child
     private string _password;
     private string _filename;
     private int _points;
-    private int _goal = 0;
+    private int _goal;
     
     private bool _loggedIn;
     public List<Task> _userTasks = new List<Task>();
@@ -215,23 +215,16 @@ public class Child
         _points = 0;
     }
 
+    public virtual void SetGoal() => _goal = 0;
+
     public int GetGoal()
     {
         return _goal;
     }
 
-    public void DisplayPoints(){
-        
-        TaskFile file1 = new TaskFile();
-        int points = file1.GetTotalUserPts();
-        int goal = GetGoal();
-        if (points < 0)
-        {
-            Console.WriteLine($"Great job! You have {points} / {goal}");
-        }
-        else{
-            Console.WriteLine("Let's start earning some points!");
-        }
+    public virtual void DisplayPoints(int p)
+    {
+        Console.WriteLine($"You have {p}.");
         Thread.Sleep(3000);
     }
 
@@ -271,6 +264,13 @@ public class Child
             int response = Convert.ToInt32(Console.ReadLine());
             return response-1;
         }
+
+    public void RecordTaskPoints()
+    {
+        Task completed = ChooseToRecord();
+        int pts = completed.RecordCompletedTask();
+        AddUserPoints(pts);
+    }
 
 
 }

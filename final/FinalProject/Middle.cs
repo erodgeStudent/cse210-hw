@@ -3,13 +3,23 @@ using System.Text.RegularExpressions;
 
 public class Middle : Child {
     
-    private int _goal = 500;
+    private int _goal;
     private string _password;
 
 
 
     public Middle(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
     {
+    }
+
+    public override void SetGoal() => _goal = 500;
+
+    public override void DisplayPoints(int p)
+    {
+        int goal = GetGoal();
+        Console.WriteLine(goal);
+        Console.WriteLine($"You have {p} / {goal} points.");
+        Thread.Sleep(3000);
     }
 
     // public override void SetPassword()

@@ -9,7 +9,7 @@ class Single : Task {
         var name = GetName();
         var points = GetPointVal();
         var complete = CheckIsComplete();
-        return $"{GetType()}={name}:{points}:{complete}";
+        return $"{GetType()}={name}#{points}#{complete}";
     }
 
     public override void DisplayTaskString()

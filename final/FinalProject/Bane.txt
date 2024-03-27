@@ -1,2 +1,0 @@
-0
-Single=Read Library Book:50:False

@@ -52,7 +52,7 @@ public class Task{
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}:{points}:{complete}"+time;
+        return $"{GetType()}={name}#{points}#{complete}"+time;
     }
 
     public virtual void SetFrequency(){
@@ -88,24 +88,25 @@ public class Task{
 
     public Task DetermineTask(string type, string name, int points, bool complete, DateTime time)
     {
-        // Console.WriteLine($"Inside DetermineTask {complete}");
-        Task task1 = new Task(name, points, complete, time);
+        Console.WriteLine($"Inside DetermineTask {complete}");
+        // Task task1 = new Task(name, points, complete, time);
         switch (type)
         {
             case "Daily":
-                task1 = new Daily(name, points, complete, time);
-                SetFrequency();
-                break;
-            case "Single":
-                task1 = new Single(name, points, complete, time);
-                break;
+                Daily daily = new Daily(name, points, complete, time);
+                daily.SetFrequency();
+                return daily;
+                
             case "Weekly":
-                task1 = new Weekly(name, points, complete, time);
-                SetFrequency();
-                break;
+                Weekly weekly = new Weekly(name, points, complete, time);
+                weekly.SetFrequency();
+                return weekly;
+            default:
+            Single single = new Single(name, points, complete, time);
+                return single;
             
         }
-        return task1;
+        // return task1;
     }
 
 }

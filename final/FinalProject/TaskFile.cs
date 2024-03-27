@@ -12,8 +12,9 @@ class TaskFile{
 
     private int _totalUserPts;
 
-    public void Save(List<string> lst, Child c){
+    public void Save(Child c){
         var filename = $"{c.SaveFile()}.txt";
+        var lst = c.GetTasks();
         var points = c.GetPoints();
         using (StreamWriter outputfile = new StreamWriter(filename))
         {
@@ -43,11 +44,10 @@ class TaskFile{
         var lst = c._userTasks;
         if (!File.Exists(filename))
         {
-            List<string> personalTasks = c.GetTasks();
-            Save(personalTasks, c);
+            Save(c);
         }
         int points = Convert.ToInt32(File.ReadLines(filename).First());
-        _totalUserPts = points;
+        SetTotalUserPts(points);
         string[] lines = System.IO.File.ReadAllLines(filename);
         lines = lines.Skip(1).ToArray();
         using (StreamWriter outputFile = new StreamWriter(filename))
@@ -66,17 +66,16 @@ class TaskFile{
         Task task = new Task("",0,false, default);
         string[] strArray = stringSave.Split("=");
         string type = strArray[0];
-        string[] paramArray = strArray[1].Split(":");
+        string[] paramArray = strArray[1].Split("#");
         string name = paramArray[0];
         int points = Convert.ToInt32(paramArray[1]);
         bool complete = Convert.ToBoolean(paramArray[2]);
-        // string time = paramArray[3];
-        Task uploaded = task.DetermineTask(type, name, points, complete, default);
+        DateTime time = DateTime.Parse(paramArray[3]);
+        Task uploaded = task.DetermineTask(type, name, points, complete, time);
         if (complete == true)
         {
             uploaded.CheckOffTask();
         }
-        Console.WriteLine($"CreateTask: {complete}");
         lst.Add(uploaded);
     }
 }
