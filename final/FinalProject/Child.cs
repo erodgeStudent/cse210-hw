@@ -103,7 +103,7 @@ public class Child
         var correct = false;
         string password = GetPassword();
         do{
-            Console.WriteLine(password);
+            Console.WriteLine($"Hint: password is {password}");
             Console.WriteLine("Enter your password");
             string input = Console.ReadLine();
             
