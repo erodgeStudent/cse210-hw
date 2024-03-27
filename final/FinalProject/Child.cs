@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
@@ -17,8 +18,9 @@ public class Child
     public List<Task> _userTasks = new List<Task>();
     // public List<Child> _children = new List<Child>();
 
-    public Child(string name, string password, bool loggedIn)
+    public Child(int age, string name, string password, bool loggedIn)
     {
+        _age = age;
         _name = name;
         _password = password;
         _loggedIn = loggedIn;
@@ -27,7 +29,7 @@ public class Child
 
     public Child ListAllChildren(List<Child> lst)
     {
-        Child child = new Child ("","",false);
+        Child child = new Child (0,"","",false);
         
         int count = 1;
         Console.WriteLine("Select a user: ");
@@ -51,7 +53,7 @@ public class Child
         string pattern = @"(0[1-9]|1[0,1,2])-(0[1-9]|[12][0-9]|3[01])-(19|20)\d{2}";
         Regex regex = new Regex(pattern);
         Match match = Regex.Match(input, pattern, RegexOptions.IgnoreCase);
-        Child child1 = new Child("","", false);
+        Child child1 = new Child(0,"","", false);
         if (match.Success)
             {
                 Console.WriteLine("successfully matched birthday format.");
@@ -60,12 +62,12 @@ public class Child
                 int bDate = Convert.ToInt16(dateArray[1]);
                 int bYear = Convert.ToInt16(dateArray[2]);
                 DateTime now = DateTime.Today;
-                _age = now.Year - bYear;
+                int age = now.Year - bYear;
                 Console.WriteLine("What is your child's name?");
                 string name = Console.ReadLine();
                 Console.WriteLine("Create a password: ");
                 string password = Console.ReadLine();
-                child1 = DetermineAgeGroup(_age, name, password);
+                child1 = DetermineAgeGroup(age, name, password);
             }
             else 
             {
@@ -82,16 +84,16 @@ public class Child
         switch (a)
         {
             case int i when i <= 7:
-                Primary primary = new Primary(name,passWd,false);
+                Primary primary = new Primary(a, name,passWd,false);
                 return primary;
             case int i when i >= 8 && i <= 10:
-                Elementary elementary = new Elementary(name, passWd,false);
+                Elementary elementary = new Elementary(a,name, passWd,false);
                 return elementary;
             case int i when i >= 11 && i <= 13:
-                Middle middle = new Middle(name, passWd, false);
+                Middle middle = new Middle(a,name, passWd, false);
                 return middle;
             default:
-                High high = new High(name, passWd, false);
+                High high = new High(a,name, passWd, false);
                 return high;
 
         }

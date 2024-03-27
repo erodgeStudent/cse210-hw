@@ -5,7 +5,7 @@ public class Elementary : Child
     private int _goal = 150;
 
 
-    public Elementary(string name, string password, bool loggedIn) : base (name, password, loggedIn)
+    public Elementary(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
     {
     
     }

@@ -16,7 +16,7 @@ class Program
         userFile.Load(_children);
         do{
             Menu menu = new Menu();
-            Child child = new Child("","", false);
+            Child child = new Child(0,"","", false);
             int input = menu.StartMenu();
             if (input == 1)
             {

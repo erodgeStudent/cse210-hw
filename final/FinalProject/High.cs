@@ -5,7 +5,7 @@ public class High : Child {
 
 
 
-    public High(string name, string password, bool loggedIn) : base(name, password, loggedIn)
+    public High(int age, string name, string password, bool loggedIn) : base(age, name, password, loggedIn)
     {
     }
 

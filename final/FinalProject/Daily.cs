@@ -2,9 +2,12 @@ using System;
 
 class Daily : Task
 {
-    private bool _complete;
+    private DateTime _timeStamp;
+    private DateTime _timeToReset;
     public Daily(string name, int pointVal, bool complete) : base(name, pointVal, complete)
     {
+        _timeStamp = DateTime.Now;
+        _timeToReset = _timeStamp.AddDays(1).AddHours(9);
     }
 
     public override void DisplayTaskString()
@@ -29,9 +32,11 @@ class Daily : Task
 
     public override void SetFrequency(Task t){
         //start timer over at 9 am every day.
-        DateTime tomorrowAtNineAM = DateTime.Now.AddDays(1).AddHours(9);
         DateTime currentTime = DateTime.Now;
-        if (tomorrowAtNineAM >= currentTime)
+        Console.WriteLine(currentTime);
+        Console.WriteLine(_timeStamp);
+        
+        if (currentTime >= _timeToReset)
         {
             t.RenewTask();
         }

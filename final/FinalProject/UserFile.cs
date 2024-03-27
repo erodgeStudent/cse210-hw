@@ -46,7 +46,7 @@ class UserFile{
 
     public void CreateChild(string childString, List<Child> lst)
     {
-        Child child = new Child("","",false);
+        Child child = new Child(0, "","",false);
         string[] strArray = childString.Split("=");
         string[] paramArray = strArray[1].Split(":");
         int age = Convert.ToInt16(paramArray[0]);

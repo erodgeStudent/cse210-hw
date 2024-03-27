@@ -85,12 +85,14 @@ public class Task{
         {
             case "Daily":
                 task1 = new Daily(name, points, complete);
+                SetFrequency(task1);
                 break;
             case "Single":
                 task1 = new Single(name, points, complete);
                 break;
             case "Weekly":
                 task1 = new Weekly(name, points, complete);
+                
                 break;
             
         }

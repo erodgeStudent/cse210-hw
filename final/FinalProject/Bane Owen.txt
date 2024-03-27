@@ -1,0 +1,3 @@
+20
+Daily=Read Scriptures:20:True
+Daily=Read Library Book:25:False

@@ -6,7 +6,7 @@ public class Middle : Child {
 
 
 
-    public Middle(string name, string password, bool loggedIn) : base (name, password, loggedIn)
+    public Middle(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
     {
     
     }
