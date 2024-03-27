@@ -52,3 +52,9 @@ _user abilities_
 
 _end_
 program ends when users log out and select Quit.
+
+**Resources**
+I used various resources to help with topics such as DateTime and Regex. 
+_https://stackoverflow.com/questions/32222646/regex-to-allow-some-special-characters-c-sharp_
+_https://www.c-sharpcorner.com/article/datetime-in-c-sharp/_
+_https://www.c-sharpcorner.com/blogs/timespan-in-c-sharp_
