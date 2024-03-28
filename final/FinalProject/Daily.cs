@@ -6,9 +6,8 @@ class Daily : Task
     private DateTime _timeToReset;
     public Daily(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
-        _timeStamp = timestamp;
-        TimeSpan ts = new TimeSpan(5,0,0); 
-        _timeToReset = _timeStamp.AddDays(1)+ts;
+        _timeStamp = timestamp.Date;
+        _timeToReset = _timeStamp.AddDays(1);
     }
 
     private DateTime GetRenewTime()
@@ -22,10 +21,11 @@ class Daily : Task
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
+        var renew = GetRenewTime();
         var check = "[ ]";
         if (complete == true)
         {check = "[X]"; }
-        Console.WriteLine($">> {check} {name} is worth {pVal} points.");
+        Console.WriteLine($">> {check} {name} is worth {pVal} points. Renews: {renew}");
     }
 
     public override string SaveStringInFile()

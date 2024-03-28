@@ -69,7 +69,7 @@ class TaskFile{
         string name = paramArray[0];
         int points = Convert.ToInt32(paramArray[1]);
         bool complete = Convert.ToBoolean(paramArray[2]);
-        DateTime time = DateTime.Parse(paramArray[3]);
+        DateTime time = DateTime.Parse(paramArray[3]).Date;
         Task uploaded = task.DetermineTask(type, name, points, complete, time);
         if (complete == true)
         {

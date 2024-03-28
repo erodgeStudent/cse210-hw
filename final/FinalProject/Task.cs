@@ -73,6 +73,7 @@ public class Task{
 
     public void RenewTask()
     {
+        _timestamp = DateTime.Now.Date;
         _complete = false;
     }
 
