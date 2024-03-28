@@ -26,6 +26,8 @@ public class Task{
         return _timestamp;
     }
 
+    
+
     public int GetPointVal()
     {
         return _pointVal;
