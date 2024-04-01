@@ -249,7 +249,6 @@ public class Child
 
     public List<Task> AddTask(Task t)
     {
-        Console.WriteLine("Inside child AddTask");
         _userTasks.Add(t);
         return _userTasks;
     }

@@ -1,1 +1,3 @@
 Users:
+MiddleChild=12:Bane:BaneMan#3:True
+ElementaryChild=8:Roman:RoRo09!:True
