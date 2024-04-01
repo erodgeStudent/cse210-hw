@@ -46,14 +46,4 @@ public class MiddleChild : Child {
         return password;
     }
 
-    public override List<string> GetTasks()
-    {
-        List<string> childTasks = new List<string>();
-        foreach (Task t in _middleUserTasks)
-        {
-                var stringSave = t.SaveStringInFile();
-                childTasks.Add(stringSave);
-        }
-        return childTasks;
-    }
 }

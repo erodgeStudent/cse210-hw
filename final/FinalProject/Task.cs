@@ -7,6 +7,7 @@ public class Task{
     private int _pointVal;
     private bool _complete;
     private DateTime _timestamp;
+    private DateTime _timeToReset;
 
     public Task(string name, int pointVal, bool complete, DateTime timestamp)
     {
@@ -24,6 +25,10 @@ public class Task{
     public DateTime GetTimeStamp()
     {
         return _timestamp;
+    }
+
+    public void SetRenew(DateTime renew){
+        _timeToReset = renew;
     }
 
     
@@ -52,7 +57,7 @@ public class Task{
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}#{points}#{complete}"+time;
+        return $"{GetType()}={name}#{points}#{complete}#{time}";
     }
 
     public virtual void SetFrequency(){

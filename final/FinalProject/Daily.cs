@@ -4,6 +4,7 @@ class Daily : Task
 {
     private DateTime _timeStamp;
     private DateTime _timeToReset;
+    
     public Daily(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
         _timeStamp = timestamp.Date;
@@ -15,6 +16,7 @@ class Daily : Task
         return _timeToReset;
     }
 
+    
     public override void DisplayTaskString()
     {
         SetFrequency();
@@ -35,7 +37,7 @@ class Daily : Task
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
         var renew = GetRenewTime();
-        return $"{GetType()}={name}#{points}#{complete}#"+time+renew;
+        return $"{GetType()}={name}#{points}#{complete}#{time}#{renew}";
     }
 
     public override void SetFrequency(){

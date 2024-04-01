@@ -1,8 +1,3 @@
-using System;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 public class Child
@@ -157,10 +152,10 @@ public class Child
         return _name;
     }
 
-    public virtual List<string> GetTasks()
+    public List<string> GetTasks(List<Task> lst)
     {
         List<string> childTasks = new List<string>();
-        foreach (Task t in _userTasks)
+        foreach (Task t in lst)
         {
                 var stringSave = t.SaveStringInFile();
                 childTasks.Add(stringSave);
@@ -233,6 +228,7 @@ public class Child
     {
         if (p >= g)
         {
+        Thread.Sleep(1000);
         Console.Clear();
         Console.WriteLine( "You earned a Reward!");
         Thread.Sleep(3000);
@@ -240,8 +236,20 @@ public class Child
         }
     }
 
-    public virtual List<Task> AddTask(Task t)
+    public List<string> GetTasks()
     {
+        List<string> childTasks = new List<string>();
+        foreach (Task t in _userTasks)
+        {
+                var stringSave = t.SaveStringInFile();
+                childTasks.Add(stringSave);
+        }
+        return childTasks;
+    }
+
+    public List<Task> AddTask(Task t)
+    {
+        Console.WriteLine("Inside child AddTask");
         _userTasks.Add(t);
         return _userTasks;
     }

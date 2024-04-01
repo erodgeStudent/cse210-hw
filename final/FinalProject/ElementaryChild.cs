@@ -45,17 +45,6 @@ public class ElementaryChild : Child
         Console.Clear();
         return password;
     }
-    
-    public override List<string> GetTasks()
-    {
-        List<string> childTasks = new List<string>();
-        foreach (Task t in _elementaryUserTasks)
-        {
-                var stringSave = t.SaveStringInFile();
-                childTasks.Add(stringSave);
-        }
-        return childTasks;
-    }
 
 
 }

@@ -33,7 +33,8 @@ class Weekly : Task
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}#{points}#{complete}#"+time;
+        var renew = GetRenewTime();
+        return $"{GetType()}={name}#{points}#{complete}#{time}#{renew}";
     }
 
     public override void SetFrequency()

@@ -31,16 +31,5 @@ public class PrimaryChild : Child
         return base.CreateNewPassword();
     }   
 
-    public override List<string> GetTasks()
-    {
-        List<string> childTasks = new List<string>();
-        foreach (Task t in _primaryUserTasks)
-        {
-                var stringSave = t.SaveStringInFile();
-                childTasks.Add(stringSave);
-        }
-        return childTasks;
-    }
-
 
 }
