@@ -1,12 +1,13 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class Primary : Child
+public class PrimaryChild : Child
 {   
     private int _primaryGoal;
     private string _password;
+    public List<Task> _primaryUserTasks = new List<Task>();
 
-    public Primary(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
+    public PrimaryChild(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
     {
     }
 

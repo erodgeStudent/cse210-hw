@@ -1,28 +1,27 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class Middle : Child {
-    
-    private int _middleGoal;
+public class HighChild : Child {
+    private int _highGoal;
     private string _password;
 
+    
+    private List<Task> _highUserTasks;
 
 
-    public Middle(int age, string name, string password, bool loggedIn) : base (age, name, password, loggedIn)
+    public HighChild(int age, string name, string password, bool loggedIn) : base(age, name, password, loggedIn)
     {
     }
 
-    public override void SetGoal() => _middleGoal = 500;
+    public override void SetGoal() => _highGoal = 1000;
 
     public override int GetGoal()
     {
-        return _middleGoal;
+        return _highGoal;
     }
-
     public override void DisplayPoints(int p)
     {
         int goal = GetGoal();
-        Console.WriteLine(goal);
         Console.WriteLine($"You have {p} / {goal} points.");
         Reward(p, goal);
         Thread.Sleep(3000);
@@ -32,16 +31,19 @@ public class Middle : Child {
     {
         Console.WriteLine("Please set your password.\nCapital letter, number, special character, and 8 character minimum required. ");
         string password = Convert.ToString(Console.ReadLine());
-        var validate = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-        var valid = validate.IsMatch(password);
+        var num = new Regex(@"[0-9]+");
+        var upper = new Regex(@"[A-Z]");
+        var min = new Regex(@".{8,}");
+        var specialChars = new Regex(@"[!#$%^&()_.-]");
+        var valid = num.IsMatch(password) && upper.IsMatch(password) && min.IsMatch(password) && specialChars.IsMatch(password);
         if (valid)
         {
             Console.WriteLine("New password stored.");
-        }else{
-            Console.WriteLine("Requirements not met");
         }
         Thread.Sleep(2000);
         Console.Clear();
         return password;
     }
+
+
 }

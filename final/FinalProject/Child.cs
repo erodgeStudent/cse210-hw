@@ -1,8 +1,3 @@
-using System;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 
 public class Child
@@ -83,16 +78,16 @@ public class Child
         switch (a)
         {
             case int i when i <= 7:
-                Primary primary = new Primary(a, name,passWd,false);
+                PrimaryChild primary = new PrimaryChild(a, name,passWd,false);
                 return primary;
             case int i when i >= 8 && i <= 10:
-                Elementary elementary = new Elementary(a,name, passWd,false);
+                ElementaryChild elementary = new ElementaryChild(a,name, passWd,false);
                 return elementary;
             case int i when i >= 11 && i <= 13:
-                Middle middle = new Middle(a,name, passWd, false);
+                MiddleChild middle = new MiddleChild(a,name, passWd, false);
                 return middle;
             default:
-                High high = new High(a,name, passWd, false);
+                HighChild high = new HighChild(a,name, passWd, false);
                 return high;
         }
     }
@@ -157,10 +152,10 @@ public class Child
         return _name;
     }
 
-    public List<string> GetTasks()
+    public List<string> GetTasks(List<Task> lst)
     {
         List<string> childTasks = new List<string>();
-        foreach (Task t in _userTasks)
+        foreach (Task t in lst)
         {
                 var stringSave = t.SaveStringInFile();
                 childTasks.Add(stringSave);
@@ -233,6 +228,7 @@ public class Child
     {
         if (p >= g)
         {
+        Thread.Sleep(1000);
         Console.Clear();
         Console.WriteLine( "You earned a Reward!");
         Thread.Sleep(3000);
@@ -240,7 +236,18 @@ public class Child
         }
     }
 
-    public virtual List<Task> AddTask(Task t)
+    public List<string> GetTasks()
+    {
+        List<string> childTasks = new List<string>();
+        foreach (Task t in _userTasks)
+        {
+                var stringSave = t.SaveStringInFile();
+                childTasks.Add(stringSave);
+        }
+        return childTasks;
+    }
+
+    public List<Task> AddTask(Task t)
     {
         _userTasks.Add(t);
         return _userTasks;

@@ -1,12 +1,3 @@
-using System;
-using System.Drawing;
-using System.IO;
-using System.IO.Enumeration;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.ObjectiveC;
-using System.Linq;
-using System.Collections;
-using System.Security.Cryptography;
 
 class TaskFile{
 
@@ -39,8 +30,8 @@ class TaskFile{
 
     public void Load(Child c)
     {   
-        var filename = $"{c.SaveFile()}.txt";
         var lst = c._userTasks;
+        var filename = $"{c.SaveFile()}.txt";
         if (!File.Exists(filename))
         {
             Save(c);
@@ -60,6 +51,7 @@ class TaskFile{
         }
     }
 
+
     public void CreateTask(string stringSave, List<Task> lst)
     {
         Task task = new Task("",0,false, default);
@@ -71,10 +63,16 @@ class TaskFile{
         bool complete = Convert.ToBoolean(paramArray[2]);
         DateTime time = DateTime.Parse(paramArray[3]);
         Task uploaded = task.DetermineTask(type, name, points, complete, time);
+        if (type == "Daily" || type == "Weekly")
+        {
+            DateTime renew = DateTime.Parse(paramArray[4]);
+            uploaded.SetRenew(renew);
+        }
         if (complete == true)
         {
             uploaded.CheckOffTask();
         }
         lst.Add(uploaded);
+  
     }
 }

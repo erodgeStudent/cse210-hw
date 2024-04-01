@@ -1,7 +1,7 @@
 **Purpose**
 Users can create a single environment to track multiple kinds of chores including daily, single-use, and weekly. Information for each child is password protected.
 _Information stored_
-Name, age, password, current points are stored for each user.
+Name, age, password, current points are stored for each user. Future use: bool if user is logged in.
 Each chore has name, value in points, if it is complete, and a timestamp for when chore was created. Each renewable task has DateTime for when it is to be renewed (daily or weekly).
 Has multiple savepoints throughout to save new information.
 

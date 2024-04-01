@@ -6,9 +6,8 @@ class Weekly : Task
     private DateTime _timeToReset;
     public Weekly(string name, int pointVal, bool complete, DateTime timestamp) : base(name, pointVal, complete, timestamp)
     {
-        _timestamp = timestamp;
-        TimeSpan ts = new TimeSpan(5,0,0);
-        _timeToReset = _timestamp.AddDays(7)+ts;
+        _timestamp = timestamp.Date;
+        _timeToReset = _timestamp.AddDays(7).Date;
     }
 
         public override void DisplayTaskString()
@@ -16,10 +15,16 @@ class Weekly : Task
         var name = GetName();
         var pVal = GetPointVal();
         var complete = CheckIsComplete();
+        var renew = GetRenewTime();
         var check = "[ ]";
         if (complete == true)
         {check = "[X]"; }
-        Console.WriteLine($">> {check} {name} is worth {pVal} points.");
+        Console.WriteLine($">> {check} {name} is worth {pVal} points. Renews: {renew}");
+    }
+
+    private DateTime GetRenewTime()
+    {
+        return _timeToReset;
     }
 
     public override string SaveStringInFile()
@@ -28,7 +33,8 @@ class Weekly : Task
         var points = GetPointVal();
         var complete = CheckIsComplete();
         var time = GetTimeStamp();
-        return $"{GetType()}={name}#{points}#{complete}#"+time;
+        var renew = GetRenewTime();
+        return $"{GetType()}={name}#{points}#{complete}#{time}#{renew}";
     }
 
     public override void SetFrequency()

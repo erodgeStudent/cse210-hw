@@ -31,7 +31,9 @@ class Program
                 {
                     Child user = child.ListAllChildren(_children);
                     user.PasswordLogin();
+                    
                     file.Load(user);
+            
                     var loggedIn = "true";
                     do{
                         // 
