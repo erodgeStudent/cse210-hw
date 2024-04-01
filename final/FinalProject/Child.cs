@@ -83,16 +83,16 @@ public class Child
         switch (a)
         {
             case int i when i <= 7:
-                Primary primary = new Primary(a, name,passWd,false);
+                PrimaryChild primary = new PrimaryChild(a, name,passWd,false);
                 return primary;
             case int i when i >= 8 && i <= 10:
-                Elementary elementary = new Elementary(a,name, passWd,false);
+                ElementaryChild elementary = new ElementaryChild(a,name, passWd,false);
                 return elementary;
             case int i when i >= 11 && i <= 13:
-                Middle middle = new Middle(a,name, passWd, false);
+                MiddleChild middle = new MiddleChild(a,name, passWd, false);
                 return middle;
             default:
-                High high = new High(a,name, passWd, false);
+                HighChild high = new HighChild(a,name, passWd, false);
                 return high;
         }
     }
@@ -157,7 +157,7 @@ public class Child
         return _name;
     }
 
-    public List<string> GetTasks()
+    public virtual List<string> GetTasks()
     {
         List<string> childTasks = new List<string>();
         foreach (Task t in _userTasks)

@@ -1,12 +1,15 @@
 using System;
 using System.Text.RegularExpressions;
 
-public class High : Child {
+public class HighChild : Child {
     private int _highGoal;
     private string _password;
 
+    
+    private List<Task> _highUserTasks;
 
-    public High(int age, string name, string password, bool loggedIn) : base(age, name, password, loggedIn)
+
+    public HighChild(int age, string name, string password, bool loggedIn) : base(age, name, password, loggedIn)
     {
     }
 
@@ -42,5 +45,14 @@ public class High : Child {
         return password;
     }
 
-
+    public override List<string> GetTasks()
+    {
+        List<string> childTasks = new List<string>();
+        foreach (Task t in _highUserTasks)
+        {
+                var stringSave = t.SaveStringInFile();
+                childTasks.Add(stringSave);
+        }
+        return childTasks;
+    }
 }
